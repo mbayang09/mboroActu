@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Événements — MboroActu</title>
+<meta name="description" content="Calendrier des événements locaux de Mboro : culturels, sportifs, communautaires et institutionnels.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <a href="index.html" class="logo">Mboro<span>Actu</span></a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="evenements.html" class="active">Événements</a>
+      <a href="culture.html">Culture</a>
+      <a href="sport.html">Sport</a>
+      <a href="economie.html">Économie</a>
+      <a href="education.html">Éducation</a>
+      <a href="voyageur.html" class="highlight">🧳 Voyageur</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Accueil</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="evenements.html">Événements</a>
+    <a href="culture.html">Culture</a>
+    <a href="sport.html">Sport</a>
+    <a href="economie.html">Économie</a>
+    <a href="education.html">Éducation</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="voyageur.html" class="highlight">🧳 Espace Voyageur</a>
+  </nav>
+</header>
+
+<section class="inner-hero">
+  <div class="inner-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1400&q=75');"></div>
+  <div class="inner-hero-overlay"></div>
+  <div class="inner-hero-body">
+    <div class="inner-hero-wrap">
+      <div>
+        <span class="eyebrow">Agenda local</span>
+        <h1>Événements</h1>
+        <p>Tous les événements culturels, sportifs, communautaires et institutionnels de Mboro et ses environs.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="actualites.html" class="btn-primary">Voir les actualités →</a>
+        </div>
+      </div>
+      <div class="inner-hero-stats">
+        <div class="ihs-item"><span class="ihs-label">Événements ce mois</span><span class="ihs-val">6</span></div>
+        <div class="ihs-item"><span class="ihs-label">Prochains jours</span><span class="ihs-val">12 sept.</span></div>
+        <div class="ihs-item"><span class="ihs-label">Soumettre</span><span class="ihs-val">Gratuit</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap section">
+  <div class="layout-wide">
+    <div>
+      <!-- CALENDAR NAV -->
+      <div class="month-nav">
+        <button id="cal-prev" aria-label="Mois précédent">←</button>
+        <h3 id="month-display">Septembre 2026</h3>
+        <button id="cal-next" aria-label="Mois suivant">→</button>
+      </div>
+
+      <!-- CALENDAR GRID -->
+      <div class="calendar-grid">
+        <div class="cal-header">Lun</div>
+        <div class="cal-header">Mar</div>
+        <div class="cal-header">Mer</div>
+        <div class="cal-header">Jeu</div>
+        <div class="cal-header">Ven</div>
+        <div class="cal-header">Sam</div>
+        <div class="cal-header">Dim</div>
+
+        <!-- Septembre 2026 commence un Mardi -->
+        <div class="cal-day empty"></div>
+        <div class="cal-day today">1</div>
+        <div class="cal-day">2</div>
+        <div class="cal-day">3</div>
+        <div class="cal-day">4</div>
+        <div class="cal-day has-event">5<div class="cal-dot"></div></div>
+        <div class="cal-day">6</div>
+
+        <div class="cal-day">7</div>
+        <div class="cal-day">8</div>
+        <div class="cal-day">9</div>
+        <div class="cal-day">10</div>
+        <div class="cal-day">11</div>
+        <div class="cal-day has-event">12<div class="cal-dot"></div></div>
+        <div class="cal-day">13</div>
+
+        <div class="cal-day">14</div>
+        <div class="cal-day">15</div>
+        <div class="cal-day">16</div>
+        <div class="cal-day has-event">17<div class="cal-dot"></div></div>
+        <div class="cal-day">18</div>
+        <div class="cal-day">19</div>
+        <div class="cal-day has-event">20<div class="cal-dot"></div></div>
+
+        <div class="cal-day">21</div>
+        <div class="cal-day">22</div>
+        <div class="cal-day">23</div>
+        <div class="cal-day">24</div>
+        <div class="cal-day">25</div>
+        <div class="cal-day has-event">26<div class="cal-dot"></div></div>
+        <div class="cal-day">27</div>
+
+        <div class="cal-day">28</div>
+        <div class="cal-day">29</div>
+        <div class="cal-day">30</div>
+        <div class="cal-day empty"></div>
+        <div class="cal-day empty"></div>
+        <div class="cal-day empty"></div>
+        <div class="cal-day empty"></div>
+      </div>
+
+      <!-- EVENTS LIST -->
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">À venir</span>
+          <h2>Événements en septembre</h2>
+        </div>
+        <div class="filter-tabs" style="margin:0;">
+          <button class="filter-tab active">Tous</button>
+          <button class="filter-tab">Culture</button>
+          <button class="filter-tab">Sport</button>
+          <button class="filter-tab">Communautaire</button>
+        </div>
+      </div>
+
+      <!-- AD FULLBAND before events list -->
+      <div class="ad-fullband">
+        <div class="ad-fullband-inner">
+          <div class="afb-logo">FGC</div>
+          <div class="afb-text">
+            <span class="eyebrow">Sponsor officiel · Festival Grande Côte</span>
+            <h3>Festival de la Grande Côte — Édition 2026</h3>
+            <p>3 jours de musique, artisanat et gastronomie — Front de mer, 3 au 5 octobre 2026.</p>
+          </div>
+          <a href="#" class="afb-cta">En savoir plus →</a>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-card-date">SEPT<b>5</b>2026</div>
+        <div class="event-card-body">
+          <span class="tag culture">Culture</span>
+          <h3>Grand Magal de Touba — Préparatifs communautaires</h3>
+          <p>La communauté mouride de Mboro organise les préparatifs du Grand Magal. Réunion de coordination, collecte de fonds et organisation des transports collectifs.</p>
+          <div class="event-meta">
+            <span>📍 Place centrale, Mboro</span>
+            <span>🕒 À partir de 09h00</span>
+            <span>Entrée libre</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-card-date">SEPT<b>12</b>2026</div>
+        <div class="event-card-body">
+          <span class="tag sport">Sport</span>
+          <h3>Tournoi de plage inter-quartiers 2026</h3>
+          <p>Compétition de football de plage entre les équipes des différents quartiers de Mboro. Journée de sport et de convivialité ouverte à tous.</p>
+          <div class="event-meta">
+            <span>📍 Plage de Mboro-sur-Mer</span>
+            <span>🕒 08h00 – 18h00</span>
+            <span>Gratuit</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-card-date">SEPT<b>17</b>2026</div>
+        <div class="event-card-body">
+          <span class="tag actu">Communautaire</span>
+          <h3>Assemblée générale de l'Association des jeunes de Mboro</h3>
+          <p>L'AJM tient son assemblée générale annuelle pour rendre compte des activités et élire le nouveau bureau. Ouvert à tous les membres.</p>
+          <div class="event-meta">
+            <span>📍 Maison des jeunes, Mboro</span>
+            <span>🕒 15h00</span>
+            <span>Membres uniquement</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-card-date">SEPT<b>20</b>2026</div>
+        <div class="event-card-body">
+          <span class="tag edu">Éducation</span>
+          <h3>Clôture des Vacances Numériques 2026</h3>
+          <p>Cérémonie de remise des attestations aux participants de la formation numérique (Word, Excel, PowerPoint, IA). Discours, démonstrations et goûter offert.</p>
+          <div class="event-meta">
+            <span>📍 Centre Culturel El Hadji Galgou Ndiaye</span>
+            <span>🕒 10h00</span>
+            <span>Entrée libre</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-card-date">SEPT<b>26</b>2026</div>
+        <div class="event-card-body">
+          <span class="tag culture">Culture</span>
+          <h3>Soirée culturelle : Nuit des tambours de Mboro</h3>
+          <p>Grande soirée musicale mettant à l'honneur les percussions traditionnelles de la région. Plusieurs groupes de sabar et de tama sont attendus.</p>
+          <div class="event-meta">
+            <span>📍 Esplanade de la mairie</span>
+            <span>🕒 20h00</span>
+            <span>Entrée libre</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card" style="opacity:.7;">
+        <div class="event-card-date">OCT<b>3</b>2026</div>
+        <div class="event-card-body">
+          <span class="tag culture">Culture</span>
+          <h3>Festival de la Grande Côte — Édition 2026</h3>
+          <p>Le festival annuel revient avec trois jours de musique, d'artisanat, de gastronomie et d'expositions locales. Artistes locaux et invités nationaux au programme.</p>
+          <div class="event-meta">
+            <span>📍 Front de mer, Mboro-sur-Mer</span>
+            <span>🕒 Trois jours (3–5 oct.)</span>
+            <span>Payant</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="ad-annonceur-mois">
+        <div class="aam-top"><span>⭐ ANNONCEUR DU MOIS</span><span class="aam-crown">👑</span></div>
+        <div class="aam-body">
+          <div class="aam-logo-wrap">ICS</div>
+          <div class="aam-name">Industries Chimiques du Sénégal</div>
+          <p class="aam-desc">Premier employeur de Mboro depuis 1960. Modernisation 2026 en cours, 45 postes ouverts.</p>
+          <a href="#" class="aam-btn">Découvrir ICS →</a>
+          <div class="aam-contact">Votre entreprise ici · pub@mboroactu.sn</div>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>📣 Soumettre un événement</h3>
+        <p style="font-size:13px;color:var(--grey);margin-bottom:12px;">Vous organisez un événement à Mboro ? Signalez-le-nous, nous le publierons gratuitement.</p>
+        <a href="mailto:contact@mboroactu.sn?subject=Soumettre un événement" class="btn-primary" style="display:inline-flex;width:100%;justify-content:center;">Soumettre →</a>
+      </div>
+
+      <div class="ad-std">
+        <div class="ad-std-top"><span>PUBLICITÉ</span><span>●</span></div>
+        <div class="ad-std-body">
+          <div class="ad-std-logo">RC</div>
+          <h4>Restaurant La Côte</h4>
+          <p>Spécialités de poisson frais, terrasse vue mer.</p>
+          <a href="#" class="ad-std-cta">Réserver →</a>
+          <span class="ad-recrute">📍 Mboro-sur-Mer</span>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>📅 Octobre à venir</h3>
+        <div class="event-item">
+          <div class="event-date">OCT<b>3</b></div>
+          <div><h4>Festival de la Grande Côte</h4><span>Front de mer</span></div>
+        </div>
+        <div class="event-item">
+          <div class="event-date">OCT<b>10</b></div>
+          <div><h4>Match de ligue régionale</h4><span>Stade municipal</span></div>
+        </div>
+        <div class="event-item">
+          <div class="event-date">OCT<b>18</b></div>
+          <div><h4>Journée mondiale de l'alimentation</h4><span>Mboro</span></div>
+        </div>
+      </div>
+
+      <div class="ad-placeholder">
+        <div class="ph-icon">📢</div>
+        <h4>Votre publicité ici</h4>
+        <p>Atteignez des milliers d'habitants de Mboro chaque semaine.</p>
+        <a href="mailto:pub@mboroactu.sn">Réserver cet espace →</a>
+      </div>
+
+      <div class="ad-tarifs">
+        <span class="ad-tarifs-title">📣 Annoncez sur MboroActu</span>
+        <div class="tarif-row"><span class="t-name">Annonceur du mois</span><span class="t-price">15 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Bannière standard</span><span class="t-price">8 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Partenaire bande</span><span class="t-price">5 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Article sponsorisé</span><span class="t-price">12 000 FCFA</span></div>
+        <a href="mailto:pub@mboroactu.sn" class="tarif-cta">Réserver un espace →</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="wrap" style="padding-bottom:60px;">
+  <div class="newsletter">
+    <div>
+      <h3>Ne ratez plus aucun événement</h3>
+      <p>Recevez chaque semaine les actualités et événements de Mboro directement par email.</p>
+    </div>
+    <div class="nl-form">
+      <input type="email" placeholder="Votre adresse email">
+      <button type="button">S'abonner</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Mboro<span>Actu</span></div>
+        <p>Le portail d'actualités locales de Mboro.</p>
+      </div>
+      <div>
+        <h4>Rubriques</h4>
+        <ul>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="culture.html">Culture</a></li>
+          <li><a href="sport.html">Sport</a></li>
+          <li><a href="economie.html">Économie</a></li>
+          <li><a href="education.html">Éducation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="voyageur.html">Espace Voyageur</a></li>
+          <li><a href="galerie.html">Galerie & Vidéo</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Publicité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@mboroactu.sn">contact@mboroactu.sn</a></li>
+          <li><a href="#">Mboro, Sénégal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MboroActu. Tous droits réservés.</span>
+      <span>Fait à Mboro 🇸🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

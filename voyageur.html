@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace Voyageur — MboroActu</title>
+<meta name="description" content="Espace Voyageur de Mboro : covoiturage et transport de colis entre habitants. Publiez votre trajet, trouvez un voyageur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Page-specific overrides */
+  .voy-hero {
+    background: var(--navy-deep);
+    color: var(--sand);
+    padding: 52px 0 60px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--orange);
+  }
+  .voy-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(115deg, rgba(247,127,0,.06) 0 2px, transparent 2px 40px);
+    pointer-events: none;
+  }
+  .voy-hero-inner { position: relative; }
+  .voy-hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -.02em; margin: 10px 0 14px; }
+  .voy-hero p { font-size: 16px; color: #B9C2D6; max-width: 580px; line-height: 1.65; }
+  .how-it-works { margin-top: 36px; }
+  .how-steps { display: flex; gap: 0; position: relative; }
+  .how-steps::before {
+    content: "";
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    right: 40px;
+    height: 2px;
+    background: repeating-linear-gradient(to right, var(--orange) 0 12px, transparent 12px 20px);
+  }
+  .how-step { flex: 1; text-align: center; padding: 0 16px; position: relative; }
+  .step-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--orange);
+    color: var(--navy-deep);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .how-step h4 { font-size: 14px; margin-bottom: 4px; }
+  .how-step p { font-size: 12px; color: #AEB8CC; }
+  .disclaimer-box {
+    background: rgba(247,127,0,.08);
+    border: 1px solid rgba(247,127,0,.3);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 12px;
+    color: #AEB8CC;
+    line-height: 1.6;
+    margin-top: 14px;
+  }
+  .disclaimer-box strong { color: var(--sand); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <a href="index.html" class="logo">Mboro<span>Actu</span></a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="evenements.html">Événements</a>
+      <a href="culture.html">Culture</a>
+      <a href="sport.html">Sport</a>
+      <a href="economie.html">Économie</a>
+      <a href="education.html">Éducation</a>
+      <a href="voyageur.html" class="highlight active">🧳 Voyageur</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Accueil</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="evenements.html">Événements</a>
+    <a href="culture.html">Culture</a>
+    <a href="sport.html">Sport</a>
+    <a href="economie.html">Économie</a>
+    <a href="education.html">Éducation</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="voyageur.html" class="highlight">🧳 Espace Voyageur</a>
+  </nav>
+</header>
+
+<!-- VOYAGEUR HERO -->
+<section class="voy-hero">
+  <div class="wrap voy-hero-inner">
+    <span class="eyebrow">Entraide · Transport · Covoiturage</span>
+    <h1>Espace Voyageur</h1>
+    <p>Un point de rencontre entre ceux qui voyagent et ceux qui en ont besoin : un colis à envoyer sur la route, une place libre dans une voiture. Simple, local, entre habitants de Mboro et environs.</p>
+
+    <div class="voy-modes" style="margin-top:28px;margin-bottom:0;">
+      <div class="voy-mode">
+        <span class="icon">📦</span>
+        <h4>Envoyer un colis</h4>
+        <p>Trouvez un voyageur qui passe par votre destination et confiez-lui votre colis.</p>
+      </div>
+      <div class="voy-mode">
+        <span class="icon">🚗</span>
+        <h4>Covoiturage</h4>
+        <p>Un chauffeur qui part seul propose ses places libres à moindre coût.</p>
+      </div>
+      <div class="voy-mode">
+        <span class="icon">💬</span>
+        <h4>Contact direct</h4>
+        <p>Les coordonnées sont partagées. Vous discutez directement par téléphone ou WhatsApp.</p>
+      </div>
+      <div class="voy-mode">
+        <span class="icon">🔒</span>
+        <h4>Bon sens</h4>
+        <p>Vérifiez l'identité de votre interlocuteur avant tout envoi ou trajet partagé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN VOYAGEUR SECTION -->
+<section class="voy-section" id="voyageur" style="border-top:none;padding-top:48px;">
+  <div class="wrap">
+    <div class="voy-layout">
+
+      <!-- FORM -->
+      <div class="voy-form">
+        <h3>Se signaler comme voyageur</h3>
+        <p>Remplissez ce formulaire et votre trajet apparaîtra sur le tableau. Les personnes intéressées vous contacteront directement.</p>
+
+        <div class="type-toggle">
+          <button class="active" id="btn-covoit" onclick="setType('covoit')">🚗 Chauffeur / Covoiturage</button>
+          <button id="btn-colis" onclick="setType('colis')">📦 Je peux prendre un colis</button>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="f-depart">Ville de départ</label>
+            <input id="f-depart" type="text" placeholder="Mboro">
+          </div>
+          <div class="field">
+            <label for="f-arrivee">Ville d'arrivée</label>
+            <select id="f-arrivee">
+              <option>Dakar</option>
+              <option>Thiès</option>
+              <option>Saint-Louis</option>
+              <option>Touba</option>
+              <option>Kaolack</option>
+              <option>Louga</option>
+              <option>Ziguinchor</option>
+              <option>Autre…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-date">Jour du voyage</label>
+            <input id="f-date" type="date">
+          </div>
+          <div class="field">
+            <label for="f-heure">Heure de départ</label>
+            <input id="f-heure" type="time">
+          </div>
+          <div class="field" id="field-places">
+            <label for="f-places">Places disponibles</label>
+            <input id="f-places" type="number" min="1" max="8" placeholder="3">
+          </div>
+          <div class="field" id="field-prix">
+            <label for="f-prix">Prix par place (FCFA)</label>
+            <input id="f-prix" type="text" placeholder="3 000" inputmode="numeric">
+          </div>
+          <div class="field full">
+            <label for="f-nom">Votre nom</label>
+            <input id="f-nom" type="text" placeholder="Ex : Modou Fall">
+          </div>
+          <div class="field full">
+            <label for="f-tel">Numéro / WhatsApp</label>
+            <input id="f-tel" type="tel" placeholder="77 000 00 00">
+          </div>
+        </div>
+
+        <div class="voy-note">
+          ⚠️ <strong>Attention :</strong> votre numéro de téléphone sera <strong>visible publiquement</strong> sur le tableau des trajets afin que les personnes intéressées puissent vous contacter directement. Assurez-vous de ne renseigner que des informations que vous acceptez de rendre publiques.
+        </div>
+
+        <button class="btn-submit" onclick="addEntry()">Publier mon trajet</button>
+
+        <div class="disclaimer-box">
+          <strong>Bon à savoir :</strong> MboroActu met en relation les personnes mais n'est <strong>pas responsable</strong> du bon déroulement des trajets ou des transports de colis. Nous vous recommandons de vérifier l'identité de votre interlocuteur avant tout arrangement. En cas d'annonce suspecte, utilisez le bouton « Signaler » sur chaque trajet.
+        </div>
+      </div>
+
+      <!-- BOARD -->
+      <div>
+        <div class="board-head">
+          <h3 class="mono">Tableau des trajets</h3>
+          <span class="live-dot">en direct</span>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+          <span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#AEB8CC;">Filtrer :</span>
+          <button class="filter-tab active" style="font-size:11px;padding:4px 10px;">Tous</button>
+          <button class="filter-tab" style="font-size:11px;padding:4px 10px;">🚗 Covoiturage</button>
+          <button class="filter-tab" style="font-size:11px;padding:4px 10px;">📦 Colis</button>
+        </div>
+
+        <div class="route-track" id="board">
+          <!-- Entries injected by app.js -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INFO SECTION -->
+<div class="wrap section-sm">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
+    <div class="sidebar-box">
+      <h3>🛡️ Nos conseils</h3>
+      <ul style="font-size:13px;color:var(--grey);display:flex;flex-direction:column;gap:8px;">
+        <li>✅ Vérifiez l'identité de votre interlocuteur avant tout arrangement</li>
+        <li>✅ Pour un colis de valeur, demandez une preuve de passage</li>
+        <li>✅ Convenez du point de remise et de la rémunération à l'avance</li>
+        <li>✅ Privilégiez les personnes que vous ou votre entourage connaissez</li>
+        <li>✅ En cas de doute, signalez l'annonce</li>
+      </ul>
+    </div>
+    <div class="sidebar-box">
+      <h3>📍 Destinations fréquentes</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
+          <span>Mboro → Dakar</span><span style="color:var(--orange);font-weight:700;">★★★★</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
+          <span>Mboro → Thiès</span><span style="color:var(--orange);font-weight:700;">★★★</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
+          <span>Mboro → Touba</span><span style="color:var(--orange);font-weight:700;">★★★</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
+          <span>Mboro → Saint-Louis</span><span style="color:var(--orange);font-weight:700;">★★</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;padding:6px 0;">
+          <span>Mboro → Kaolack</span><span style="color:var(--orange);font-weight:700;">★★</span>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-box">
+      <h3>💡 Évolutions prévues</h3>
+      <ul style="font-size:13px;color:var(--grey);display:flex;flex-direction:column;gap:8px;">
+        <li>🔜 Filtres par destination et par date</li>
+        <li>🔜 Système d'évaluation des voyageurs</li>
+        <li>🔜 Historique des trajets publiés</li>
+        <li>🔜 Messagerie interne sécurisée</li>
+      </ul>
+      <p style="font-size:11px;margin-top:12px;color:var(--grey);">Une suggestion ? Écrivez-nous à<br><a href="mailto:contact@mboroactu.sn" style="color:var(--orange);">contact@mboroactu.sn</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" style="padding-bottom:60px;">
+  <div class="newsletter">
+    <div>
+      <h3>Recevez les nouveaux trajets</h3>
+      <p>Inscrivez-vous à la newsletter pour être alerté des nouveaux trajets publiés chaque semaine.</p>
+    </div>
+    <div class="nl-form">
+      <input type="email" placeholder="Votre adresse email">
+      <button type="button">S'abonner</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Mboro<span>Actu</span></div>
+        <p>Le portail d'actualités locales de Mboro et l'Espace Voyageur — entraide entre habitants.</p>
+      </div>
+      <div>
+        <h4>Rubriques</h4>
+        <ul>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="culture.html">Culture</a></li>
+          <li><a href="sport.html">Sport</a></li>
+          <li><a href="economie.html">Économie</a></li>
+          <li><a href="education.html">Éducation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="voyageur.html">Espace Voyageur</a></li>
+          <li><a href="galerie.html">Galerie & Vidéo</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Publicité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@mboroactu.sn">contact@mboroactu.sn</a></li>
+          <li><a href="#">Mboro, Sénégal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MboroActu. Tous droits réservés.</span>
+      <span>Fait à Mboro 🇸🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MboroActu — L'actualité de Mboro</title>
+<meta name="description" content="Le portail d'actualités locales de Mboro : news, événements, culture, sport, économie, éducation et Espace Voyageur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== NOUVEAU HERO ===== */
+.hero-v2 {
+  position: relative;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--navy-deep);
+}
+
+/* Image de fond pleine largeur */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1600&q=80');
+  background-size: cover;
+  background-position: center 40%;
+  filter: brightness(.45) saturate(1.1);
+  z-index: 0;
+  transition: transform 8s ease;
+}
+.hero-v2:hover .hero-bg { transform: scale(1.03); }
+
+/* Dégradé sombre bas */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(13,27,51,.2) 0%,
+    rgba(13,27,51,.5) 50%,
+    rgba(13,27,51,.92) 100%
+  );
+  z-index: 1;
+}
+
+/* Ticker breaking news */
+.breaking-ticker {
+  position: relative;
+  z-index: 2;
+  background: var(--orange);
+  color: var(--navy-deep);
+  padding: 8px 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.breaking-label {
+  background: var(--navy-deep);
+  color: var(--orange);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding: 4px 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 1;
+}
+.ticker-track {
+  display: flex;
+  gap: 0;
+  animation: ticker 28s linear infinite;
+  white-space: nowrap;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-item {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 32px;
+}
+.ticker-sep { color: rgba(13,27,51,.5); }
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Hero contenu principal */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 0;
+}
+.hero-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  align-items: end;
+}
+
+/* Badge + headline */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orange);
+  color: var(--navy-deep);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  padding: 5px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--navy-deep);
+  border-radius: 50%;
+  animation: blink 1.2s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+.hero-v2 h1 {
+  font-size: 46px;
+  line-height: 1.07;
+  font-weight: 700;
+  letter-spacing: -.025em;
+  color: #fff;
+  margin-bottom: 14px;
+  max-width: 640px;
+  text-shadow: 0 2px 20px rgba(0,0,0,.4);
+}
+.hero-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: rgba(255,255,255,.65);
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.hero-lead-v2 {
+  font-size: 15px;
+  color: rgba(255,255,255,.8);
+  max-width: 560px;
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+.hero-actions-v2 {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 0;
+}
+
+/* Petites cartes actualités dans le hero */
+.hero-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-bottom: 0;
+}
+.hero-card-mini {
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  gap: 0;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.hero-card-mini:hover { background: rgba(255,255,255,.18); transform: translateX(3px); }
+.hero-card-thumb {
+  width: 80px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  min-height: 72px;
+}
+.hero-card-body {
+  padding: 10px 12px;
+  flex: 1;
+}
+.hero-card-body .tag { margin-bottom: 4px; font-size: 9px; }
+.hero-card-body h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+}
+.hero-card-body span {
+  font-size: 10px;
+  color: rgba(255,255,255,.5);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Bande infos bas du hero */
+.hero-bottom-bar {
+  position: relative;
+  z-index: 2;
+  background: rgba(13,27,51,.88);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,.08);
+  margin-top: 32px;
+}
+.hero-bottom-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.hb-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-right: 1px solid rgba(255,255,255,.08);
+  flex: 1;
+  min-width: 160px;
+}
+.hb-item:last-child { border: none; }
+.hb-icon { font-size: 20px; flex-shrink: 0; }
+.hb-label { font-size: 10px; color: rgba(255,255,255,.45); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: .06em; }
+.hb-val { font-size: 14px; font-weight: 700; color: #fff; margin-top: 1px; }
+.hb-val.orange { color: var(--orange); }
+
+/* News cards avec vraies images */
+.card-img-real {
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+.card-img-real::after {
+  content: "";
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,.5), transparent);
+}
+
+@media(max-width:860px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-cards { display: none; }
+  .hero-v2 h1 { font-size: 30px; }
+  .hero-bottom-inner { overflow-x: auto; }
+  .hb-item { min-width: 130px; }
+}
+@media(max-width:600px) {
+  .hero-v2 { min-height: auto; }
+  .hero-v2 h1 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="topbar">
+    <a href="index.html" class="logo">Mboro<span>Actu</span></a>
+    <nav>
+      <a href="index.html" class="active">Accueil</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="evenements.html">Événements</a>
+      <a href="culture.html">Culture</a>
+      <a href="sport.html">Sport</a>
+      <a href="economie.html">Économie</a>
+      <a href="education.html">Éducation</a>
+      <a href="voyageur.html" class="highlight">🧳 Voyageur</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Accueil</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="evenements.html">Événements</a>
+    <a href="culture.html">Culture</a>
+    <a href="sport.html">Sport</a>
+    <a href="economie.html">Économie</a>
+    <a href="education.html">Éducation</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="voyageur.html" class="highlight">🧳 Espace Voyageur</a>
+  </nav>
+</header>
+
+<!-- HERO V2 -->
+<section class="hero-v2">
+
+  <!-- Fond image + overlay -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <!-- Breaking news ticker -->
+  <div class="breaking-ticker">
+    <div class="breaking-label">🔴 LIVE</div>
+    <div style="overflow:hidden;flex:1;">
+      <div class="ticker-track">
+        <span class="ticker-item">ICS Mboro : nouveau plan d'investissement 2026 annoncé</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">Festival de la Grande Côte : du 3 au 5 octobre</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">ASC Jappo qualifié en demi-finale de la coupe régionale</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">Vacances Numériques : inscriptions ouvertes jusqu'au 10 sept.</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">Coupure d'eau jeudi — quartiers Nord et Centre concernés</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">ICS Mboro : nouveau plan d'investissement 2026 annoncé</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">Festival de la Grande Côte : du 3 au 5 octobre</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">ASC Jappo qualifié en demi-finale de la coupe régionale</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">Vacances Numériques : inscriptions ouvertes jusqu'au 10 sept.</span>
+        <span class="ticker-sep">◆</span>
+        <span class="ticker-item">Coupure d'eau jeudi — quartiers Nord et Centre concernés</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="hero-content">
+    <div class="hero-inner">
+
+      <!-- Article principal -->
+      <div>
+        <div class="hero-badge">À la une</div>
+        <h1>ICS Mboro annonce un nouveau plan d'investissement pour 2026</h1>
+        <div class="hero-meta">
+          <span>📅 Lundi 1 sept. 2026</span>
+          <span>✍️ Rédaction MboroActu</span>
+          <span>⏱ 5 min de lecture</span>
+        </div>
+        <p class="hero-lead-v2">La direction des Industries Chimiques du Sénégal a présenté les grandes lignes de son plan de modernisation du site de Mboro, avec un accent sur la sécurité, l'environnement et la maintenance prédictive.</p>
+        <div class="hero-actions-v2">
+          <a href="actualites.html" class="btn-primary">Lire l'article →</a>
+          <a href="actualites.html" class="btn-outline">Toutes les actualités</a>
+        </div>
+      </div>
+
+      <!-- Cartes secondaires -->
+      <div class="hero-cards">
+        <a href="culture.html" class="hero-card-mini">
+          <div class="hero-card-thumb" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&q=70');"></div>
+          <div class="hero-card-body">
+            <span class="tag culture">Culture</span>
+            <h4>Festival de la Grande Côte — 3 au 5 octobre</h4>
+            <span>Il y a 6h</span>
+          </div>
+        </a>
+        <a href="sport.html" class="hero-card-mini">
+          <div class="hero-card-thumb" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200&q=70');"></div>
+          <div class="hero-card-body">
+            <span class="tag sport">Sport</span>
+            <h4>ASC Jappo qualifié en demi-finale</h4>
+            <span>Hier</span>
+          </div>
+        </a>
+        <a href="education.html" class="hero-card-mini">
+          <div class="hero-card-thumb" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=200&q=70');"></div>
+          <div class="hero-card-body">
+            <span class="tag edu">Éducation</span>
+            <h4>Vacances Numériques 2026 — inscriptions ouvertes</h4>
+            <span>Il y a 2j</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Barre infos basse -->
+  <div class="hero-bottom-bar">
+    <div class="hero-bottom-inner">
+      <div class="hb-item">
+        <div class="hb-icon">☀️</div>
+        <div>
+          <div class="hb-label">Météo · Mboro</div>
+          <div class="hb-val">29°C — Ensoleillé</div>
+        </div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-icon">📅</div>
+        <div>
+          <div class="hb-label">Prochain événement</div>
+          <div class="hb-val">Tournoi plage — 12 sept.</div>
+        </div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-icon">🧳</div>
+        <div>
+          <div class="hb-label">Trajets publiés</div>
+          <div class="hb-val orange"><a href="voyageur.html" style="color:inherit;">5 trajets disponibles →</a></div>
+        </div>
+      </div>
+      <div class="hb-item">
+        <div class="hb-icon">📰</div>
+        <div>
+          <div class="hb-label">Articles aujourd'hui</div>
+          <div class="hb-val">8 nouvelles parutions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="wrap section">
+  <div class="layout">
+
+    <!-- NEWS GRID -->
+    <div>
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Dernières nouvelles</span>
+          <h2>À la une cette semaine</h2>
+        </div>
+        <a class="see-all" href="actualites.html">Voir tout →</a>
+      </div>
+
+      <div class="news-grid">
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag actu">Actualités</span>
+            <h3>Coupure d'eau prévue jeudi dans plusieurs quartiers</h3>
+            <p>La SONES annonce des travaux de maintenance sur le réseau principal de distribution.</p>
+            <div class="card-meta">Il y a 3h <span class="dot">·</span> Mboro</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag culture">Culture</span>
+            <h3>Le festival de la Grande Côte revient en septembre</h3>
+            <p>Musique, artisanat et gastronomie locale au programme de cette édition.</p>
+            <div class="card-meta">Il y a 6h <span class="dot">·</span> Mboro</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag sport">Sport</span>
+            <h3>L'ASC Jappo décroche la qualification en demi-finale</h3>
+            <p>Victoire 2-1 face à Darou Khoudoss lors du match retour ce week-end.</p>
+            <div class="card-meta">Hier <span class="dot">·</span> Mboro</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1510016830-f755e0b28aa8?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag eco">Économie</span>
+            <h3>Les pêcheurs de Mboro demandent plus de quais d'accostage</h3>
+            <p>Une rencontre avec la mairie est prévue ce mois-ci pour discuter des infrastructures.</p>
+            <div class="card-meta">Hier <span class="dot">·</span> Mboro</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag edu">Éducation</span>
+            <h3>Vacances Numériques 2026 : les inscriptions se poursuivent</h3>
+            <p>Formation gratuite au Centre Culturel El Hadji Galgou Ndiaye — Word, Excel, PowerPoint et IA.</p>
+            <div class="card-meta">Il y a 2j <span class="dot">·</span> Mboro</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag actu">Actualités</span>
+            <h3>Nouvelle ligne de bus reliant Mboro à Thiès</h3>
+            <p>Le trajet passera de 90 à 55 minutes grâce à la mise en service de bus express.</p>
+            <div class="card-meta">Il y a 2j <span class="dot">·</span> Mboro</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- ANNONCEUR DU MOIS -->
+      <div class="ad-box">
+        <div class="annonceur-logo">ICS</div>
+        <h4>Industries Chimiques du Sénégal</h4>
+        <p>Premier employeur de Mboro, ICS s'engage pour le développement local et la modernisation de ses infrastructures.</p>
+        <a href="#" class="btn-annonceur">Découvrir →</a>
+        <div class="ad-contact">Votre entreprise ici · contact@mboroactu.sn</div>
+      </div>
+
+      <!-- ÉVÉNEMENTS -->
+      <div class="sidebar-box">
+        <h3>📅 Événements à venir</h3>
+        <div class="event-item">
+          <div class="event-date">SEPT<b>5</b></div>
+          <div>
+            <h4>Grand Magal — préparatifs</h4>
+            <span>Place centrale, Mboro</span>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date">SEPT<b>12</b></div>
+          <div>
+            <h4>Tournoi de plage inter-quartiers</h4>
+            <span>Plage de Mboro-sur-Mer</span>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date">SEPT<b>20</b></div>
+          <div>
+            <h4>Clôture Vacances Numériques</h4>
+            <span>Centre Culturel El Hadji Galgou Ndiaye</span>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date">OCT<b>3</b></div>
+          <div>
+            <h4>Festival de la Grande Côte</h4>
+            <span>Front de mer, Mboro-sur-Mer</span>
+          </div>
+        </div>
+        <a href="evenements.html" class="see-all" style="display:inline-block;margin-top:10px;">Voir tous les événements →</a>
+      </div>
+
+      <!-- PLUS LUS -->
+      <div class="sidebar-box">
+        <h3>🔥 Les plus lus</h3>
+        <div class="most-read-item">
+          <span class="mr-rank">01</span>
+          <div>
+            <h4>Coupure d'eau prévue jeudi dans plusieurs quartiers</h4>
+            <span>1 204 lectures</span>
+          </div>
+        </div>
+        <div class="most-read-item">
+          <span class="mr-rank">02</span>
+          <div>
+            <h4>Festival de la Grande Côte revient en septembre</h4>
+            <span>892 lectures</span>
+          </div>
+        </div>
+        <div class="most-read-item">
+          <span class="mr-rank">03</span>
+          <div>
+            <h4>ASC Jappo en demi-finale de la coupe régionale</h4>
+            <span>760 lectures</span>
+          </div>
+        </div>
+        <div class="most-read-item">
+          <span class="mr-rank">04</span>
+          <div>
+            <h4>Vacances Numériques 2026 : inscriptions ouvertes</h4>
+            <span>614 lectures</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STANDARD AD -->
+      <div class="ad-box">
+        <div class="annonceur-logo" style="font-size:11px;">PH</div>
+        <h4>Pharmacie de Mboro</h4>
+        <p>Médicaments, conseils santé, livraison à domicile.</p>
+        <a href="#" class="btn-annonceur">Nous contacter →</a>
+        <div class="ad-contact">Espace pub disponible · contact@mboroactu.sn</div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- VOYAGEUR TEASER -->
+<section class="voy-section" id="voyageur">
+  <div class="wrap">
+    <div class="voy-head">
+      <span class="eyebrow">Nouveau · Entraide voyage</span>
+      <h2>Espace Voyageur</h2>
+      <p>Un point de rencontre entre ceux qui voyagent et ceux qui en ont besoin : un colis à envoyer sur la route, une place libre dans une voiture. Simple, local, entre habitants de Mboro et environs.</p>
+    </div>
+
+    <div class="voy-modes">
+      <div class="voy-mode">
+        <span class="icon">📦</span>
+        <h4>Envoyer un colis</h4>
+        <p>Trouvez un voyageur qui passe par votre destination et confiez-lui votre colis en toute confiance.</p>
+      </div>
+      <div class="voy-mode">
+        <span class="icon">🚗</span>
+        <h4>Covoiturage</h4>
+        <p>Un chauffeur qui part seul propose ses places libres à moindre coût — moins cher pour tous.</p>
+      </div>
+      <div class="voy-mode">
+        <span class="icon">💬</span>
+        <h4>Contact direct</h4>
+        <p>Les coordonnées sont partagées pour discuter et s'organiser directement par téléphone ou WhatsApp.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <a href="voyageur.html" class="btn-primary" style="display:inline-flex;font-size:15px;padding:13px 28px;">
+        Accéder à l'Espace Voyageur →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTENAIRES -->
+<div class="partners-band">
+  <div class="wrap">
+    <div class="partners-grid">
+      <a href="#" class="partner-card">
+        <div class="partner-icon">💊</div>
+        <div class="partner-info">
+          <h5>Pharmacie de Mboro</h5>
+          <span>Santé</span>
+        </div>
+      </a>
+      <a href="#" class="partner-card">
+        <div class="partner-icon">🥖</div>
+        <div class="partner-info">
+          <h5>Boulangerie Centrale</h5>
+          <span>Alimentation</span>
+        </div>
+      </a>
+      <a href="#" class="partner-card">
+        <div class="partner-icon">🔧</div>
+        <div class="partner-info">
+          <h5>Quincaillerie Ndiaye</h5>
+          <span>Commerce</span>
+        </div>
+      </a>
+      <a href="#" class="partner-card">
+        <div class="partner-icon">🍽️</div>
+        <div class="partner-info">
+          <h5>Restaurant La Côte</h5>
+          <span>Restauration</span>
+        </div>
+      </a>
+      <a href="#" class="partner-card">
+        <div class="partner-icon">🚗</div>
+        <div class="partner-info">
+          <h5>Garage Auto Mbour</h5>
+          <span>Automobile</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- VIDÉO & GALERIE -->
+<div class="wrap section">
+  <div class="section-head">
+    <div><span class="eyebrow">À l'écran</span><h2>Vidéo de la semaine</h2></div>
+    <a class="see-all" href="galerie.html">Voir la galerie →</a>
+  </div>
+  <div class="video-block">
+    <div class="play-btn">▶</div>
+    <div class="video-label">Reportage : Le marché de Mboro en pleine expansion — Sept. 2026</div>
+  </div>
+
+  <div class="section-head" style="margin-top:44px;">
+    <div><span class="eyebrow">En images</span><h2>Galerie photo</h2></div>
+    <a class="see-all" href="galerie.html">Voir tout →</a>
+  </div>
+  <div class="gallery">
+    <div class="gallery-item event-bg">MAGAL 2026</div>
+    <div class="gallery-item sport-bg">ASC JAPPO</div>
+    <div class="gallery-item culture-bg">FESTIVAL</div>
+    <div class="gallery-item">MARCHÉ</div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="wrap" style="padding-bottom:60px;">
+  <div class="newsletter">
+    <div>
+      <h3>Restez informé de Mboro</h3>
+      <p>Recevez chaque semaine les actualités, événements et trajets voyageurs directement par email.</p>
+    </div>
+    <div class="nl-form">
+      <input type="email" placeholder="Votre adresse email">
+      <button type="button">S'abonner</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Mboro<span>Actu</span></div>
+        <p>Le portail d'actualités locales de Mboro : news, événements, culture, sport, économie, éducation — et l'entraide voyageurs.</p>
+      </div>
+      <div>
+        <h4>Rubriques</h4>
+        <ul>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="culture.html">Culture</a></li>
+          <li><a href="sport.html">Sport</a></li>
+          <li><a href="economie.html">Économie</a></li>
+          <li><a href="education.html">Éducation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="voyageur.html">Espace Voyageur</a></li>
+          <li><a href="galerie.html">Galerie & Vidéo</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Publicité</a></li>
+          <li><a href="#">Annonces</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@mboroactu.sn">contact@mboroactu.sn</a></li>
+          <li><a href="#">Publicité : pub@mboroactu.sn</a></li>
+          <li><a href="#">Mboro, Sénégal</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MboroActu. Tous droits réservés.</span>
+      <span>Fait à Mboro 🇸🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

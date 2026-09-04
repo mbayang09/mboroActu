@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sport — MboroActu</title>
+<meta name="description" content="Résultats, actualités et calendrier des clubs et compétitions sportives de Mboro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <a href="index.html" class="logo">Mboro<span>Actu</span></a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="evenements.html">Événements</a>
+      <a href="culture.html">Culture</a>
+      <a href="sport.html" class="active">Sport</a>
+      <a href="economie.html">Économie</a>
+      <a href="education.html">Éducation</a>
+      <a href="voyageur.html" class="highlight">🧳 Voyageur</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Accueil</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="evenements.html">Événements</a>
+    <a href="culture.html">Culture</a>
+    <a href="sport.html">Sport</a>
+    <a href="economie.html">Économie</a>
+    <a href="education.html">Éducation</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="voyageur.html" class="highlight">🧳 Espace Voyageur</a>
+  </nav>
+</header>
+
+<section class="inner-hero">
+  <div class="inner-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1400&q=75');"></div>
+  <div class="inner-hero-overlay"></div>
+  <div class="inner-hero-body">
+    <div class="inner-hero-wrap">
+      <div>
+        <span class="eyebrow">Clubs &amp; Compétitions</span>
+        <h1>Sport</h1>
+        <p>Résultats, actualités et calendrier des clubs et compétitions sportives de Mboro.</p>
+        <div style="display:flex;gap:10px;margin-top:20px;">
+          <a href="actualites.html" class="btn-primary">Toutes les actus →</a>
+        </div>
+      </div>
+      <div class="inner-hero-stats">
+        <div class="ihs-item"><span class="ihs-label">Clubs locaux</span><span class="ihs-val">4</span></div>
+        <div class="ihs-item"><span class="ihs-label">Dernier résultat</span><span class="ihs-val">ASC Jappo 2-1</span></div>
+        <div class="ihs-item"><span class="ihs-label">Prochain match</span><span class="ihs-val">12 sept.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap section">
+  <div class="layout">
+    <div>
+      <!-- SCORES -->
+      <div class="section-head">
+        <div><span class="eyebrow">Derniers matchs</span><h2>Résultats récents</h2></div>
+      </div>
+
+      <div class="score-grid" style="margin-bottom:36px;">
+        <div class="score-card">
+          <div class="score-label">Coupe régionale • Demi-finale</div>
+          <div class="score-teams">
+            <div class="score-team">
+              <span>ASC Jappo</span>
+              <small>Mboro</small>
+            </div>
+            <div class="score-num">2–1</div>
+            <div class="score-team">
+              <span>ASC D. Khoudoss</span>
+              <small>Darou Khoudoss</small>
+            </div>
+          </div>
+          <div class="card-meta" style="margin-top:10px;justify-content:center;">Sam. 30 août 2026</div>
+        </div>
+
+        <div class="score-card">
+          <div class="score-label">Ligue départementale</div>
+          <div class="score-teams">
+            <div class="score-team">
+              <span>ASC Étoile</span>
+              <small>Mboro</small>
+            </div>
+            <div class="score-num">1–1</div>
+            <div class="score-team">
+              <span>ASC Djambaré</span>
+              <small>Tivaouane</small>
+            </div>
+          </div>
+          <div class="card-meta" style="margin-top:10px;justify-content:center;">Dim. 31 août 2026</div>
+        </div>
+
+        <div class="score-card">
+          <div class="score-label">Tournoi de plage</div>
+          <div class="score-teams">
+            <div class="score-team">
+              <span>Quartier Nord</span>
+              <small>Mboro</small>
+            </div>
+            <div class="score-num">3–2</div>
+            <div class="score-team">
+              <span>Quartier Sud</span>
+              <small>Mboro</small>
+            </div>
+          </div>
+          <div class="card-meta" style="margin-top:10px;justify-content:center;">Sam. 24 août 2026</div>
+        </div>
+      </div>
+
+      <!-- AD FULLBAND between scores and articles -->
+      <div class="ad-fullband">
+        <div class="ad-fullband-inner">
+          <div class="afb-logo">ICS</div>
+          <div class="afb-text">
+            <span class="eyebrow">Sponsor sport · MboroActu</span>
+            <h3>ICS Mboro — Sponsor officiel des clubs sportifs locaux</h3>
+            <p>Soutien aux associations sportives de Mboro depuis 2018. Rejoignez la communauté ICS.</p>
+          </div>
+          <a href="#" class="afb-cta">Découvrir →</a>
+        </div>
+      </div>
+
+      <!-- ARTICLES -->
+      <div class="section-head">
+        <div><span class="eyebrow">Actualités sportives</span><h2>À la une du sport</h2></div>
+      </div>
+
+      <div class="news-grid" style="margin-bottom:32px;">
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag sport">Sport</span>
+            <h3>ASC Jappo : cap sur la finale de la coupe régionale</h3>
+            <p>Après leur victoire en demi-finale, les joueurs de Jappo se préparent pour la grande finale prévue le 15 octobre.</p>
+            <div class="card-meta">Lun. 1 sept. 2026 <span class="dot">·</span> 4 min</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag sport">Sport</span>
+            <h3>Tournoi de plage inter-quartiers : les inscriptions sont ouvertes</h3>
+            <p>Le tournoi aura lieu le 12 septembre. Chaque quartier peut inscrire une équipe de 6 joueurs.</p>
+            <div class="card-meta">Sam. 30 août 2026 <span class="dot">·</span> 2 min</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1510016830-f755e0b28aa8?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag sport">Sport</span>
+            <h3>Concours de pêche sportive à Mboro-sur-Mer</h3>
+            <p>Organisé par l'association des pêcheurs, ce concours réunit chaque année des passionnés de la région.</p>
+            <div class="card-meta">Jeu. 28 août 2026 <span class="dot">·</span> 3 min</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag sport">Sport</span>
+            <h3>Deux athlètes de Mboro sélectionnés pour les championnats régionaux</h3>
+            <p>Ibou Sarr (100m) et Aïda Mbaye (saut en longueur) représenteront Mboro à Thiès en octobre.</p>
+            <div class="card-meta">Mar. 26 août 2026 <span class="dot">·</span> 2 min</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALENDRIER DES MATCHS -->
+      <div class="section-head">
+        <div><span class="eyebrow">Agenda</span><h2>Prochains matchs</h2></div>
+      </div>
+
+      <div class="sidebar-box">
+        <div class="match-item">
+          <div class="match-date mono">12 SEPT 2026 · 16h</div>
+          <div class="match-teams">ASC Jappo vs ASC Mbour United</div>
+          <div class="match-lieu">Stade municipal de Mboro</div>
+        </div>
+        <div class="match-item">
+          <div class="match-date mono">15 SEPT 2026 · 15h</div>
+          <div class="match-teams">ASC Étoile vs ASC Dakar FC</div>
+          <div class="match-lieu">Terrain annexe, Mboro</div>
+        </div>
+        <div class="match-item">
+          <div class="match-date mono">22 SEPT 2026 · 16h</div>
+          <div class="match-teams">ASC Jappo vs ASC Tivaouane</div>
+          <div class="match-lieu">Stade municipal de Mboro</div>
+        </div>
+        <div class="match-item">
+          <div class="match-date mono">15 OCT 2026 · 15h</div>
+          <div class="match-teams">FINALE Coupe Régionale</div>
+          <div class="match-lieu">Stade Lat Dior, Thiès</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="ad-annonceur-mois">
+        <div class="aam-top"><span>⭐ ANNONCEUR DU MOIS</span><span class="aam-crown">👑</span></div>
+        <div class="aam-body">
+          <div class="aam-logo-wrap">ICS</div>
+          <div class="aam-name">Industries Chimiques du Sénégal</div>
+          <p class="aam-desc">Sponsor officiel des clubs sportifs locaux de Mboro. Soutien au sport depuis 2018.</p>
+          <a href="#" class="aam-btn">Découvrir ICS →</a>
+          <div class="aam-contact">Votre entreprise ici · pub@mboroactu.sn</div>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>🏆 Classement ligue dept.</h3>
+        <div style="font-size:13px;">
+          <div class="match-item" style="padding:8px 0;">
+            <div class="mr-rank" style="min-width:24px;">1</div>
+            <div class="match-teams">ASC Jappo</div>
+            <div class="match-lieu">18 pts</div>
+          </div>
+          <div class="match-item" style="padding:8px 0;">
+            <div class="mr-rank" style="min-width:24px;">2</div>
+            <div class="match-teams">ASC Djambaré</div>
+            <div class="match-lieu">14 pts</div>
+          </div>
+          <div class="match-item" style="padding:8px 0;">
+            <div class="mr-rank" style="min-width:24px;">3</div>
+            <div class="match-teams">ASC Étoile</div>
+            <div class="match-lieu">12 pts</div>
+          </div>
+          <div class="match-item" style="padding:8px 0;border:none;">
+            <div class="mr-rank" style="min-width:24px;">4</div>
+            <div class="match-teams">ASC Mbour Utd</div>
+            <div class="match-lieu">10 pts</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ad-std">
+        <div class="ad-std-top"><span>PUBLICITÉ</span><span>●</span></div>
+        <div class="ad-std-body">
+          <div class="ad-std-logo">GA</div>
+          <h4>Garage Auto Mbour</h4>
+          <p>Entretien, réparation, pièces détachées. Partenaire de vos déplacements.</p>
+          <a href="#" class="ad-std-cta">Nous contacter →</a>
+          <span class="ad-recrute">📍 Mboro Centre</span>
+        </div>
+      </div>
+
+      <div class="sidebar-box">
+        <h3>🔥 Articles les plus lus</h3>
+        <div class="most-read-item"><span class="mr-rank">01</span><div><h4>ASC Jappo en demi-finale</h4><span>760 lectures</span></div></div>
+        <div class="most-read-item"><span class="mr-rank">02</span><div><h4>Tournoi de plage — inscriptions</h4><span>412 lectures</span></div></div>
+        <div class="most-read-item"><span class="mr-rank">03</span><div><h4>Athlètes sélectionnés</h4><span>289 lectures</span></div></div>
+      </div>
+
+      <div class="ad-placeholder">
+        <div class="ph-icon">📢</div>
+        <h4>Votre publicité ici</h4>
+        <p>Atteignez des milliers d'habitants de Mboro chaque semaine.</p>
+        <a href="mailto:pub@mboroactu.sn">Réserver cet espace →</a>
+      </div>
+
+      <div class="ad-tarifs">
+        <span class="ad-tarifs-title">📣 Annoncez sur MboroActu</span>
+        <div class="tarif-row"><span class="t-name">Annonceur du mois</span><span class="t-price">15 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Bannière standard</span><span class="t-price">8 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Partenaire bande</span><span class="t-price">5 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Article sponsorisé</span><span class="t-price">12 000 FCFA</span></div>
+        <a href="mailto:pub@mboroactu.sn" class="tarif-cta">Réserver un espace →</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="wrap" style="padding-bottom:60px;">
+  <div class="newsletter">
+    <div>
+      <h3>Restez informé de Mboro</h3>
+      <p>Recevez chaque semaine les résultats, événements sportifs et actualités de Mboro par email.</p>
+    </div>
+    <div class="nl-form">
+      <input type="email" placeholder="Votre adresse email">
+      <button type="button">S'abonner</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Mboro<span>Actu</span></div>
+        <p>Le portail d'actualités locales de Mboro.</p>
+      </div>
+      <div>
+        <h4>Rubriques</h4>
+        <ul>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="culture.html">Culture</a></li>
+          <li><a href="sport.html">Sport</a></li>
+          <li><a href="economie.html">Économie</a></li>
+          <li><a href="education.html">Éducation</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="voyageur.html">Espace Voyageur</a></li>
+          <li><a href="galerie.html">Galerie & Vidéo</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Publicité</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:contact@mboroactu.sn">contact@mboroactu.sn</a></li>
+          <li><a href="#">Mboro, Sénégal</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 MboroActu. Tous droits réservés.</span>
+      <span>Fait à Mboro 🇸🇳</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
