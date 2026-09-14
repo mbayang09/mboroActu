@@ -390,6 +390,14 @@ nav a.highlight:hover { background: var(--amber-mid); }
 .card-featured .card-body { padding: 28px; }
 .card-featured h3 { font-size: 22px; line-height: 1.25; }
 
+/* Override card-img-real inside article-item (horizontal list layout) */
+.article-item .card-img-real {
+  width: 110px;
+  height: 76px;
+  border-radius: 5px;
+  flex-shrink: 0;
+}
+
 /* Article en liste */
 .article-item {
   display: flex;
@@ -1304,6 +1312,17 @@ footer {
   color: rgba(255,255,255,.28);
 }
 
+/* === GALERIE VIDEO GRID === */
+.video-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+@media (max-width: 860px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
 /* === PAGINATION === */
 .pagination { display: flex; gap: 6px; justify-content: center; margin-top: 32px; }
 .page-btn {
@@ -1408,6 +1427,139 @@ footer {
 }
 .ad-std-cta:hover { background: var(--amber-mid); }
 .ad-std-contact { font-size: 10px; color: #aaa; margin-top: 8px; }
+
+/* === ESPACE PUBLICITAIRE DISPONIBLE === */
+.ad-placeholder {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  position: relative;
+  background: linear-gradient(135deg, var(--void) 0%, #1a2e5a 100%);
+  border: 1.5px dashed rgba(200,88,5,.5);
+}
+.ad-placeholder::before {
+  content: "ESPACE DISPONIBLE";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  background: var(--amber);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-align: center;
+  padding: 5px;
+}
+.ph-icon {
+  font-size: 32px;
+  display: block;
+  text-align: center;
+  padding: 36px 20px 8px;
+}
+.ad-placeholder h4 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 8px;
+  padding: 0 20px;
+}
+.ad-placeholder p {
+  font-size: 12px;
+  color: rgba(255,255,255,.55);
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 20px 16px;
+}
+.ad-placeholder a {
+  display: block;
+  margin: 0 16px 16px;
+  background: var(--amber);
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.ad-placeholder a:hover { background: var(--amber-mid); }
+.ad-placeholder-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,.07);
+  border-top: 1px solid rgba(255,255,255,.08);
+  margin: 0 0 16px;
+}
+.aps-item {
+  padding: 12px 10px;
+  text-align: center;
+  background: rgba(0,0,0,.15);
+}
+.aps-val {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--amber);
+}
+.aps-label {
+  display: block;
+  font-size: 10px;
+  color: rgba(255,255,255,.4);
+  margin-top: 2px;
+}
+
+/* === GRILLE TARIFS PUB === */
+.ad-tarifs {
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1.5px solid var(--rule);
+  margin-bottom: 20px;
+}
+.ad-tarifs-title {
+  display: block;
+  background: linear-gradient(100deg, var(--void), #1a2e5a);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 10px 16px;
+}
+.tarif-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 12px;
+}
+.tarif-row:last-of-type { border: none; }
+.t-name { color: var(--ink); font-weight: 500; }
+.t-price {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--amber);
+  white-space: nowrap;
+}
+.tarif-cta {
+  display: block;
+  margin: 0 12px 12px;
+  background: var(--amber);
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 11px;
+  border-radius: 6px;
+  transition: background .15s;
+}
+.tarif-cta:hover { background: var(--amber-mid); }
 
 .ad-fullband {
   background: var(--amber-pale);
@@ -1583,17 +1735,27 @@ footer {
   .voy-layout { grid-template-columns: 1fr; }
   .voy-modes { flex-direction: column; }
   .card-featured { grid-template-columns: 1fr; }
+  .card-featured .card-img-real { min-height: 200px; height: 200px; }
   .gallery { grid-template-columns: 1fr 1fr; }
   .newsletter { flex-direction: column; padding: 32px 24px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .inner-hero-wrap { grid-template-columns: 1fr; }
   .inner-hero-stats { display: none; }
   .inner-hero h1 { font-size: 30px; }
+  .inner-hero { min-height: 260px; }
   .ad-fullband-inner { flex-wrap: wrap; }
+  .afh-inner { flex-wrap: wrap; }
+  .afh-cta { width: 100%; text-align: center; }
+  .ad-inline { flex-wrap: wrap; }
+  .ai-cta { width: 100%; text-align: center; margin-top: 8px; }
+  .event-card { flex-wrap: wrap; }
+  .news-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .resto-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
   .news-grid { grid-template-columns: 1fr; }
   .news-grid-2 { grid-template-columns: 1fr; }
+  .news-grid-4 { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .score-grid { grid-template-columns: 1fr; }
@@ -1604,6 +1766,22 @@ footer {
   .nl-form { flex-direction: column; }
   .voy-hero h1 { font-size: 30px; }
   .inner-hero h1 { font-size: 26px; }
+  .inner-hero { min-height: 220px; }
+  .resto-grid { grid-template-columns: 1fr; }
+  .aap-img { height: 80px; }
+  .event-card { flex-direction: column; }
+  .voy-section .wrap { flex-direction: column; }
+  .afh-inner { flex-direction: column; align-items: flex-start; }
+  .afh-cta { width: 100%; text-align: center; }
+  .ad-inline { flex-direction: column; align-items: flex-start; }
+  .ai-cta { width: 100%; text-align: center; }
+}
+@media (max-width: 480px) {
+  .header-ticker { display: none; }
+  .featured-grid { grid-template-columns: 1fr; }
+  .featured-side { flex-direction: column; }
+  .pharma-grid { grid-template-columns: 1fr; }
+  .pharma-main { grid-template-columns: 1fr; }
 }
 
 /* ===================================================
@@ -1858,9 +2036,11 @@ footer {
   .pharma-grid { grid-template-columns: 1fr; }
   .pharma-main { grid-template-columns: 1fr; }
   .pharma-img { min-height: 160px; }
+  .hero-v2 { height: 400px !important; }
 }
 @media (max-width: 600px) {
   .resto-grid { grid-template-columns: 1fr; }
   .news-grid-4 { grid-template-columns: 1fr; }
   .featured-side { flex-direction: column; }
+  .hero-v2 { height: 300px !important; }
 }
