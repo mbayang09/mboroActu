@@ -232,6 +232,27 @@
   .hb-item:first-child { padding-left: 16px; }
 }
 @media(max-width:600px) {
+  .hero-bottom-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow-x: visible;
+    padding: 0;
+    max-width: 100%;
+  }
+  .hb-item {
+    padding: 12px 16px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    min-width: 0;
+  }
+  .hb-item:first-child { padding-left: 16px; }
+  .hb-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.06); }
+  .hb-item:nth-last-child(-n+2) { border-bottom: none; }
+  .hb-label { font-size: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hb-val { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hb-icon { font-size: 16px; }
+}
+@media(max-width:600px) {
   .hero-v2 { height: 400px; }
   .hero-v2 h1, .hero-slider h1 { font-size: 22px; line-height: 1.2; }
   .hero-lead-v2 { display: none; }
