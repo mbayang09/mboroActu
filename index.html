@@ -233,7 +233,7 @@
 }
 @media(max-width:600px) {
   .hero-v2 { height: 400px; }
-  .hero-v2 h1, .hero-slider h1 { font-size: 26px; }
+  .hero-v2 h1, .hero-slider h1 { font-size: 22px; line-height: 1.2; }
   .hero-lead-v2 { display: none; }
 }
 
@@ -260,10 +260,21 @@
 .hero-progress-bar.running { transition: width 6s linear; width: 100%; }
 
 @media(max-width:900px) {
-  .hero-slider { height: 480px; }
+  .hero-slider { height: 500px; }
+  .hero-inner { padding: 0 20px 36px; }
 }
 @media(max-width:600px) {
-  .hero-slider { height: 380px; }
+  .hero-slider { height: auto; min-height: 420px; }
+  .hero-arrow { display: none; }
+  .hero-dots { bottom: 14px; }
+  .hero-inner { padding: 0 16px 52px; }
+  .hero-meta { font-size: 11px; gap: 8px; flex-wrap: wrap; }
+  .hero-actions-v2 { flex-wrap: wrap; gap: 8px; }
+  .hero-actions-v2 .btn-primary, .hero-actions-v2 .btn-outline { font-size: 13px; padding: 10px 16px; width: 100%; text-align: center; justify-content: center; }
+}
+@media(max-width:400px) {
+  .hero-v2 h1, .hero-slider h1 { font-size: 20px; }
+  .hero-kicker { font-size: 10px; }
 }
 
 /* === ESPACE VOYAGEUR V2 === */
