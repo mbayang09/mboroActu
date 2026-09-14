@@ -6,28 +6,29 @@
 <title>Espace Voyageur — MboroActu</title>
 <meta name="description" content="Espace Voyageur de Mboro : covoiturage et transport de colis entre habitants. Publiez votre trajet, trouvez un voyageur.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
   /* Page-specific overrides */
   .voy-hero {
-    background: var(--navy-deep);
-    color: var(--sand);
+    background: var(--void);
+    color: #fff;
     padding: 52px 0 60px;
     position: relative;
     overflow: hidden;
-    border-bottom: 3px solid var(--orange);
+    border-bottom: 2px solid var(--amber);
   }
   .voy-hero::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: repeating-linear-gradient(115deg, rgba(247,127,0,.06) 0 2px, transparent 2px 40px);
+    background: repeating-linear-gradient(115deg, rgba(200,88,5,.05) 0 1px, transparent 1px 40px);
     pointer-events: none;
   }
   .voy-hero-inner { position: relative; }
-  .voy-hero h1 { font-size: 40px; font-weight: 700; letter-spacing: -.02em; margin: 10px 0 14px; }
-  .voy-hero p { font-size: 16px; color: #B9C2D6; max-width: 580px; line-height: 1.65; }
+  .voy-hero h1 { font-size: 44px; font-style: italic; margin: 10px 0 14px; }
+  .voy-hero p { font-size: 16px; color: rgba(255,255,255,.58); max-width: 580px; line-height: 1.65; }
   .how-it-works { margin-top: 36px; }
   .how-steps { display: flex; gap: 0; position: relative; }
   .how-steps::before {
@@ -36,19 +37,20 @@
     top: 24px;
     left: 40px;
     right: 40px;
-    height: 2px;
-    background: repeating-linear-gradient(to right, var(--orange) 0 12px, transparent 12px 20px);
+    height: 1px;
+    background: repeating-linear-gradient(to right, var(--amber) 0 10px, transparent 10px 18px);
   }
   .how-step { flex: 1; text-align: center; padding: 0 16px; position: relative; }
   .step-num {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: var(--orange);
-    color: var(--navy-deep);
-    font-family: 'Space Grotesk', sans-serif;
+    background: var(--amber);
+    color: #fff;
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
-    font-size: 20px;
+    font-style: italic;
+    font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,19 +58,19 @@
     position: relative;
     z-index: 1;
   }
-  .how-step h4 { font-size: 14px; margin-bottom: 4px; }
-  .how-step p { font-size: 12px; color: #AEB8CC; }
+  .how-step h4 { font-size: 14px; margin-bottom: 4px; color: #fff; }
+  .how-step p { font-size: 12px; color: rgba(255,255,255,.5); }
   .disclaimer-box {
-    background: rgba(247,127,0,.08);
-    border: 1px solid rgba(247,127,0,.3);
+    background: rgba(200,88,5,.08);
+    border: 1px solid rgba(200,88,5,.28);
     border-radius: 8px;
     padding: 14px 16px;
     font-size: 12px;
-    color: #AEB8CC;
+    color: rgba(255,255,255,.5);
     line-height: 1.6;
     margin-top: 14px;
   }
-  .disclaimer-box strong { color: var(--sand); }
+  .disclaimer-box strong { color: #fff; }
 </style>
 </head>
 <body>
@@ -211,7 +213,7 @@
         </div>
 
         <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
-          <span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:#AEB8CC;">Filtrer :</span>
+          <span style="font-size:11px;color:rgba(255,255,255,.5);">Filtrer :</span>
           <button class="filter-tab active" style="font-size:11px;padding:4px 10px;">Tous</button>
           <button class="filter-tab" style="font-size:11px;padding:4px 10px;">🚗 Covoiturage</button>
           <button class="filter-tab" style="font-size:11px;padding:4px 10px;">📦 Colis</button>
@@ -231,7 +233,7 @@
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
     <div class="sidebar-box">
       <h3>🛡️ Nos conseils</h3>
-      <ul style="font-size:13px;color:var(--grey);display:flex;flex-direction:column;gap:8px;">
+      <ul style="font-size:13px;color:rgba(255,255,255,.5);display:flex;flex-direction:column;gap:8px;">
         <li>✅ Vérifiez l'identité de votre interlocuteur avant tout arrangement</li>
         <li>✅ Pour un colis de valeur, demandez une preuve de passage</li>
         <li>✅ Convenez du point de remise et de la rémunération à l'avance</li>
@@ -243,31 +245,31 @@
       <h3>📍 Destinations fréquentes</h3>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;">
         <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
-          <span>Mboro → Dakar</span><span style="color:var(--orange);font-weight:700;">★★★★</span>
+          <span>Mboro → Dakar</span><span style="color:var(--amber);font-weight:700;">★★★★</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
-          <span>Mboro → Thiès</span><span style="color:var(--orange);font-weight:700;">★★★</span>
+          <span>Mboro → Thiès</span><span style="color:var(--amber);font-weight:700;">★★★</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
-          <span>Mboro → Touba</span><span style="color:var(--orange);font-weight:700;">★★★</span>
+          <span>Mboro → Touba</span><span style="color:var(--amber);font-weight:700;">★★★</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line);">
-          <span>Mboro → Saint-Louis</span><span style="color:var(--orange);font-weight:700;">★★</span>
+          <span>Mboro → Saint-Louis</span><span style="color:var(--amber);font-weight:700;">★★</span>
         </div>
         <div style="display:flex;justify-content:space-between;padding:6px 0;">
-          <span>Mboro → Kaolack</span><span style="color:var(--orange);font-weight:700;">★★</span>
+          <span>Mboro → Kaolack</span><span style="color:var(--amber);font-weight:700;">★★</span>
         </div>
       </div>
     </div>
     <div class="sidebar-box">
       <h3>💡 Évolutions prévues</h3>
-      <ul style="font-size:13px;color:var(--grey);display:flex;flex-direction:column;gap:8px;">
+      <ul style="font-size:13px;color:rgba(255,255,255,.5);display:flex;flex-direction:column;gap:8px;">
         <li>🔜 Filtres par destination et par date</li>
         <li>🔜 Système d'évaluation des voyageurs</li>
         <li>🔜 Historique des trajets publiés</li>
         <li>🔜 Messagerie interne sécurisée</li>
       </ul>
-      <p style="font-size:11px;margin-top:12px;color:var(--grey);">Une suggestion ? Écrivez-nous à<br><a href="mailto:contact@mboroactu.sn" style="color:var(--orange);">contact@mboroactu.sn</a></p>
+      <p style="font-size:11px;margin-top:12px;color:rgba(255,255,255,.5);">Une suggestion ? Écrivez-nous à<br><a href="mailto:contact@mboroactu.sn" style="color:var(--amber);">contact@mboroactu.sn</a></p>
     </div>
   </div>
 </div>
