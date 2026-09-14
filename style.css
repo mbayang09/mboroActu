@@ -63,6 +63,56 @@ header {
   border-bottom: 2px solid var(--amber);
   box-shadow: 0 2px 20px rgba(0,0,0,.35);
 }
+
+/* Ticker d'actualités dans le header */
+.header-ticker {
+  background: rgba(0,0,0,.2);
+  border-top: 1px solid rgba(255,255,255,.07);
+  overflow: hidden;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+.ht-label {
+  background: var(--amber);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 6px;
+}
+.ht-label::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+  animation: blink 1.2s infinite;
+  flex-shrink: 0;
+}
+.ht-wrap { overflow: hidden; flex: 1; }
+.ht-track {
+  display: flex;
+  animation: ticker 34s linear infinite;
+  white-space: nowrap;
+}
+.ht-track:hover { animation-play-state: paused; }
+.ht-item {
+  font-size: 11.5px;
+  font-weight: 500;
+  padding: 0 26px;
+  color: rgba(255,255,255,.78);
+  cursor: pointer;
+  transition: color .15s;
+}
+.ht-item:hover { color: var(--amber); }
+.ht-sep { color: rgba(255,255,255,.22); font-size: 11px; }
 .topbar {
   display: flex;
   align-items: center;
@@ -1391,6 +1441,133 @@ footer {
   transition: background .15s; white-space: nowrap;
 }
 .afb-cta:hover { background: var(--amber-mid); }
+
+/* Pub fullband avec image de fond */
+.ad-fullband-hero {
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  position: relative;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+}
+.ad-fullband-hero::before {
+  content: "Publicité";
+  position: absolute; top: 10px; left: 12px;
+  font-size: 9px; font-weight: 600; color: rgba(255,255,255,.5);
+  letter-spacing: .06em;
+  z-index: 2;
+}
+.afh-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(.45);
+}
+.afh-inner {
+  position: relative;
+  z-index: 1;
+  padding: 28px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+}
+.afh-logo {
+  width: 52px; height: 52px;
+  background: var(--amber); color: #fff;
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px; flex-shrink: 0;
+}
+.afh-text { flex: 1; }
+.afh-text .eyebrow { display: block; margin-bottom: 4px; color: var(--amber); }
+.afh-text h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; color: #fff; }
+.afh-text p  { font-size: 13px; color: rgba(255,255,255,.7); }
+.afh-cta {
+  background: var(--amber); color: #fff;
+  font-size: 13px; font-weight: 700;
+  padding: 11px 20px; border-radius: 6px;
+  transition: background .15s; white-space: nowrap;
+  flex-shrink: 0;
+}
+.afh-cta:hover { background: var(--amber-mid); }
+
+/* Bloc pub mid-article (inline dans la liste) */
+.ad-inline {
+  background: linear-gradient(100deg, var(--void) 0%, #1e3060 100%);
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 4px 0;
+  position: relative;
+}
+.ad-inline::before {
+  content: "Publicité";
+  position: absolute; top: 8px; right: 12px;
+  font-size: 9px; color: rgba(255,255,255,.3); letter-spacing: .06em;
+}
+.ai-logo {
+  width: 46px; height: 46px;
+  background: rgba(255,255,255,.1); color: #fff;
+  border-radius: 7px; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px; flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,.15);
+}
+.ai-text { flex: 1; }
+.ai-text h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.ai-text p  { font-size: 12px; color: rgba(255,255,255,.55); }
+.ai-cta {
+  background: var(--amber); color: #fff;
+  font-size: 12px; font-weight: 600;
+  padding: 8px 14px; border-radius: 5px;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* Sidebar annonceur premium (avec photo) */
+.ad-annonceur-premium {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid var(--amber);
+  margin-bottom: 20px;
+}
+.aap-img {
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.aap-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11,21,40,.85) 0%, transparent 60%);
+}
+.aap-badge {
+  position: absolute;
+  bottom: 10px; left: 12px;
+  background: var(--amber); color: #fff;
+  font-size: 9px; font-weight: 700; letter-spacing: .08em;
+  padding: 3px 8px; border-radius: 3px;
+  z-index: 1; text-transform: uppercase;
+}
+.aap-body {
+  background: linear-gradient(140deg, var(--void), #1a2e5a);
+  padding: 16px;
+}
+.aap-name { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.aap-desc { font-size: 12px; color: rgba(255,255,255,.55); margin-bottom: 14px; line-height: 1.5; }
+.aap-btn {
+  display: block;
+  background: var(--amber); color: #fff;
+  text-align: center; font-size: 12px; font-weight: 600;
+  padding: 9px; border-radius: 6px;
+  transition: background .15s;
+}
+.aap-btn:hover { background: var(--amber-mid); }
 
 /* === RESPONSIVE === */
 @media (max-width: 960px) {

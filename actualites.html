@@ -38,8 +38,37 @@
     <a href="galerie.html">Galerie</a>
     <a href="voyageur.html" class="highlight">🧳 Espace Voyageur</a>
   </nav>
+  <div class="header-ticker">
+    <span class="ht-label">Actus</span>
+    <div class="ht-wrap"><div class="ht-track">
+      <a href="actualites.html" class="ht-item">ICS Mboro : nouveau plan d'investissement 2026 annoncé</a>
+      <span class="ht-sep"> · </span>
+      <a href="culture.html" class="ht-item">Festival de la Grande Côte : du 3 au 5 octobre</a>
+      <span class="ht-sep"> · </span>
+      <a href="sport.html" class="ht-item">ASC Jappo qualifié en demi-finale de la coupe régionale</a>
+      <span class="ht-sep"> · </span>
+      <a href="education.html" class="ht-item">Vacances Numériques : inscriptions ouvertes jusqu'au 10 sept.</a>
+      <span class="ht-sep"> · </span>
+      <a href="actualites.html" class="ht-item">Coupure d'eau jeudi — quartiers Nord et Centre concernés</a>
+      <span class="ht-sep"> · </span>
+      <a href="economie.html" class="ht-item">Pêcheurs de Mboro : demande urgente d'extension portuaire</a>
+      <span class="ht-sep"> · </span>
+      <a href="actualites.html" class="ht-item">ICS Mboro : nouveau plan d'investissement 2026 annoncé</a>
+      <span class="ht-sep"> · </span>
+      <a href="culture.html" class="ht-item">Festival de la Grande Côte : du 3 au 5 octobre</a>
+      <span class="ht-sep"> · </span>
+      <a href="sport.html" class="ht-item">ASC Jappo qualifié en demi-finale de la coupe régionale</a>
+      <span class="ht-sep"> · </span>
+      <a href="education.html" class="ht-item">Vacances Numériques : inscriptions ouvertes jusqu'au 10 sept.</a>
+      <span class="ht-sep"> · </span>
+      <a href="actualites.html" class="ht-item">Coupure d'eau jeudi — quartiers Nord et Centre concernés</a>
+      <span class="ht-sep"> · </span>
+      <a href="economie.html" class="ht-item">Pêcheurs de Mboro : demande urgente d'extension portuaire</a>
+    </div></div>
+  </div>
 </header>
 
+<!-- HERO INTÉRIEUR -->
 <section class="inner-hero">
   <div class="inner-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1400&q=75');"></div>
   <div class="inner-hero-overlay"></div>
@@ -50,7 +79,7 @@
         <h1>Actualités</h1>
         <p>Toute l'information de Mboro et ses environs, classée par date.</p>
         <div style="display:flex;gap:10px;margin-top:20px;">
-          <a href="actualites.html" class="btn-primary">Toutes les actus →</a>
+          <a href="#articles" class="btn-primary">Voir les articles →</a>
         </div>
       </div>
       <div class="inner-hero-stats">
@@ -62,20 +91,28 @@
   </div>
 </section>
 
-<div class="wrap section">
-  <!-- AD BANNER -->
-  <div class="ad-banner">
-    <div class="ad-logo">ICS</div>
-    <div class="ad-banner-text">
-      <h4>Industries Chimiques du Sénégal — Plan investissement 2026</h4>
-      <p>Modernisation du site, emplois locaux, sécurité renforcée. En savoir plus.</p>
+<!-- PUB PREMIUM PLEINE LARGEUR — ICS -->
+<div class="wrap" style="padding-top:32px;">
+  <div class="ad-fullband-hero">
+    <div class="afh-bg" style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1200&q=80');"></div>
+    <div class="afh-inner">
+      <div class="afh-logo">ICS</div>
+      <div class="afh-text">
+        <span class="eyebrow">Partenaire officiel · MboroActu</span>
+        <h3>Industries Chimiques du Sénégal — Recrutement 2026</h3>
+        <p>45 postes ouverts — Techniciens, administratifs et opérateurs. Candidatures jusqu'au 15 sept.</p>
+      </div>
+      <a href="#" class="afh-cta">Postuler maintenant →</a>
     </div>
-    <a href="#" class="btn-primary">Découvrir →</a>
   </div>
+</div>
 
+<!-- FILTRES + ARTICLES -->
+<div class="wrap section" id="articles">
   <div class="layout-wide">
     <div>
-      <!-- FILTER TABS -->
+
+      <!-- FILTRES -->
       <div class="filter-tabs" style="margin-bottom:24px;">
         <button class="filter-tab active">Toutes</button>
         <button class="filter-tab">Récentes</button>
@@ -84,9 +121,9 @@
         <button class="filter-tab">Vie locale</button>
       </div>
 
-      <!-- FEATURED -->
-      <div class="card-featured">
-        <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da?w=600&q=75');"></div>
+      <!-- ARTICLE VEDETTE -->
+      <div class="card-featured" style="margin-bottom:24px;">
+        <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80');"></div>
         <div class="card-body">
           <span class="tag actu">Actualités</span>
           <h3>ICS Mboro annonce un nouveau plan d'investissement pour 2026</h3>
@@ -95,46 +132,49 @@
         </div>
       </div>
 
-      <!-- AD FULLBAND between featured and articles list -->
-      <div class="ad-fullband">
-        <div class="ad-fullband-inner">
-          <div class="afb-logo">ICS</div>
-          <div class="afb-text">
-            <span class="eyebrow">Partenaire officiel · MboroActu</span>
-            <h3>Industries Chimiques du Sénégal recrute</h3>
-            <p>45 postes ouverts pour le 4e trimestre 2026 — Candidatures jusqu'au 15 sept.</p>
+      <!-- GRILLE 2 COLONNES -->
+      <div class="news-grid" style="margin-bottom:20px;">
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag actu">Actualités</span>
+            <h3>Coupure d'eau prévue jeudi dans plusieurs quartiers de Mboro</h3>
+            <p>La SONES annonce des travaux sur le réseau principal. Les quartiers Nord et Centre concernés de 8h à 17h.</p>
+            <div class="card-meta">Lun. 1 sept. 2026 <span class="dot">·</span> 3 min</div>
           </div>
-          <a href="#" class="afb-cta">Postuler →</a>
+        </div>
+        <div class="card">
+          <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=75');"></div>
+          <div class="card-body">
+            <span class="tag actu">Actualités</span>
+            <h3>Nouvelle ligne de bus reliant Mboro à Thiès</h3>
+            <p>Le trajet passera de 90 à 55 minutes avec six nouveaux bus express du plan de mobilité régionale.</p>
+            <div class="card-meta">Sam. 30 août 2026 <span class="dot">·</span> 4 min</div>
+          </div>
         </div>
       </div>
 
-      <!-- ARTICLES LIST -->
-      <div class="article-item">
-        <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&q=75');"></div>
-        <div class="article-info">
-          <span class="tag actu">Actualités</span>
-          <h3>Coupure d'eau prévue jeudi dans plusieurs quartiers de Mboro</h3>
-          <p>La SONES annonce des travaux de maintenance sur le réseau principal de distribution. Les quartiers Nord et Centre seront les plus touchés entre 8h et 17h.</p>
-          <div class="card-meta">Lun. 1 sept. 2026 <span class="dot">·</span> 3 min</div>
+      <!-- PUB INTERMÉDIAIRE — RESTAURANT -->
+      <div class="ad-fullband-hero" style="margin-bottom:20px;">
+        <div class="afh-bg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80');"></div>
+        <div class="afh-inner">
+          <div class="afh-logo" style="font-size:11px;">BG</div>
+          <div class="afh-text">
+            <span class="eyebrow">Partenaire restaurant · MboroActu</span>
+            <h3>Le Baobab Gourmand — Cuisine sénégalaise authentique</h3>
+            <p>Thiéboudienne, Yassa, Mafé... Dîner en famille ou entre amis. Rue du Marché, Mboro Centre.</p>
+          </div>
+          <a href="#" class="afh-cta">Réserver →</a>
         </div>
       </div>
 
-      <div class="article-item">
-        <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&q=75');"></div>
-        <div class="article-info">
-          <span class="tag actu">Actualités</span>
-          <h3>Nouvelle ligne de bus reliant Mboro à Thiès</h3>
-          <p>Le trajet passera de 90 à 55 minutes grâce à la mise en service de six nouveaux bus express financés dans le cadre du plan de mobilité régionale.</p>
-          <div class="card-meta">Sam. 30 août 2026 <span class="dot">·</span> 4 min</div>
-        </div>
-      </div>
-
+      <!-- ARTICLES EN LISTE -->
       <div class="article-item">
         <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=75');"></div>
         <div class="article-info">
           <span class="tag actu">Actualités</span>
           <h3>Réhabilitation de la route nationale RN2 : les travaux avancent</h3>
-          <p>Les travaux de réhabilitation du tronçon Mboro-Tivaouane progressent selon le calendrier prévu. La livraison est attendue pour le mois de novembre 2026.</p>
+          <p>Les travaux du tronçon Mboro–Tivaouane progressent selon calendrier. Livraison prévue en novembre 2026.</p>
           <div class="card-meta">Ven. 29 août 2026 <span class="dot">·</span> 3 min</div>
         </div>
       </div>
@@ -144,9 +184,19 @@
         <div class="article-info">
           <span class="tag actu">Actualités</span>
           <h3>La mairie de Mboro lance un programme de reboisement</h3>
-          <p>Un millier d'arbres seront plantés dans les quartiers de Mboro dans le cadre de la campagne nationale de reboisement initiée par le ministère de l'Environnement.</p>
+          <p>Un millier d'arbres seront plantés dans les quartiers de Mboro dans le cadre de la campagne nationale de reboisement.</p>
           <div class="card-meta">Jeu. 28 août 2026 <span class="dot">·</span> 2 min</div>
         </div>
+      </div>
+
+      <!-- PUB INLINE PHARMACIE -->
+      <div class="ad-inline">
+        <div class="ai-logo">PH</div>
+        <div class="ai-text">
+          <h4>Pharmacie El Hadji Ndiaye — Garde cette semaine 24h/24</h4>
+          <p>Médicaments, conseils santé, livraison à domicile · Av. Cheikh Ahmadou Bamba, Mboro</p>
+        </div>
+        <a href="tel:+221774128309" class="ai-cta">Appeler →</a>
       </div>
 
       <div class="article-item">
@@ -154,7 +204,7 @@
         <div class="article-info">
           <span class="tag sponsored">Contenu sponsorisé</span>
           <h3>ICS Mboro recrute : 45 postes ouverts pour le trimestre</h3>
-          <p>Les Industries Chimiques du Sénégal ouvrent plusieurs postes techniques et administratifs. Les candidatures sont ouvertes jusqu'au 15 septembre 2026.</p>
+          <p>Les Industries Chimiques du Sénégal ouvrent plusieurs postes techniques et administratifs. Candidatures jusqu'au 15 septembre 2026.</p>
           <div class="card-meta">Mer. 27 août 2026 <span class="dot">·</span> Sponsorisé par ICS</div>
         </div>
       </div>
@@ -164,7 +214,7 @@
         <div class="article-info">
           <span class="tag actu">Actualités</span>
           <h3>Accès à l'eau potable : un nouveau forage inauguré à Mboro-Sud</h3>
-          <p>Les habitants du quartier Sud bénéficient désormais d'un accès direct à l'eau potable grâce à un forage financé par la coopération internationale.</p>
+          <p>Les habitants du quartier Sud bénéficient d'un accès direct à l'eau potable grâce à un forage financé par la coopération internationale.</p>
           <div class="card-meta">Mar. 26 août 2026 <span class="dot">·</span> 3 min</div>
         </div>
       </div>
@@ -174,9 +224,19 @@
         <div class="article-info">
           <span class="tag actu">Actualités</span>
           <h3>Sécurité routière : campagne de sensibilisation dans les écoles</h3>
-          <p>La gendarmerie nationale a mené une campagne de sensibilisation à la sécurité routière dans quatre établissements scolaires de Mboro cette semaine.</p>
+          <p>La gendarmerie nationale a mené une campagne dans quatre établissements scolaires de Mboro cette semaine.</p>
           <div class="card-meta">Lun. 25 août 2026 <span class="dot">·</span> 2 min</div>
         </div>
+      </div>
+
+      <!-- PUB INLINE 2 — QUINCAILLERIE -->
+      <div class="ad-inline" style="background:linear-gradient(100deg,#0B3D1E,#164d2a);">
+        <div class="ai-logo" style="background:rgba(74,224,122,.15);border-color:rgba(74,224,122,.2);color:#4AE07A;">QN</div>
+        <div class="ai-text">
+          <h4>Quincaillerie Ndiaye — Matériaux &amp; Outillage</h4>
+          <p>Construction, rénovation, livraison sur Mboro et environs · Mboro Centre</p>
+        </div>
+        <a href="#" class="ai-cta" style="background:#4AE07A;color:#0B3D1E;">Contacter →</a>
       </div>
 
       <div class="article-item">
@@ -186,6 +246,16 @@
           <h3>Le conseil municipal vote le budget primitif 2027</h3>
           <p>Le conseil municipal de Mboro a adopté à l'unanimité le budget primitif pour l'exercice 2027, avec une hausse de 12% des investissements locaux.</p>
           <div class="card-meta">Sam. 23 août 2026 <span class="dot">·</span> 4 min</div>
+        </div>
+      </div>
+
+      <div class="article-item">
+        <div class="card-img-real" style="background-image:url('https://images.unsplash.com/photo-1510016830-f755e0b28aa8?w=600&q=75');"></div>
+        <div class="article-info">
+          <span class="tag actu">Actualités</span>
+          <h3>Mboro-sur-Mer : réaménagement du front de mer annoncé pour 2027</h3>
+          <p>La mairie a présenté son projet de réaménagement du littoral, incluant une promenade piétonne et une aire de jeux.</p>
+          <div class="card-meta">Jeu. 21 août 2026 <span class="dot">·</span> 3 min</div>
         </div>
       </div>
 
@@ -201,17 +271,20 @@
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-      <div class="ad-annonceur-mois">
-        <div class="aam-top"><span>⭐ ANNONCEUR DU MOIS</span><span class="aam-crown">👑</span></div>
-        <div class="aam-body">
-          <div class="aam-logo-wrap">ICS</div>
-          <div class="aam-name">Industries Chimiques du Sénégal</div>
-          <p class="aam-desc">Premier employeur de Mboro depuis 1960. Modernisation 2026 en cours, 45 postes ouverts.</p>
-          <a href="#" class="aam-btn">Découvrir ICS →</a>
-          <div class="aam-contact">Votre entreprise ici · pub@mboroactu.sn</div>
+
+      <!-- ANNONCEUR DU MOIS PREMIUM (avec photo) -->
+      <div class="ad-annonceur-premium">
+        <div class="aap-img" style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da?w=400&q=75');">
+          <span class="aap-badge">★ Annonceur du mois</span>
+        </div>
+        <div class="aap-body">
+          <div class="aap-name">Industries Chimiques du Sénégal</div>
+          <div class="aap-desc">Premier employeur de Mboro depuis 1960. Modernisation 2026 en cours, 45 postes ouverts dès septembre.</div>
+          <a href="#" class="aap-btn">Découvrir ICS →</a>
         </div>
       </div>
 
+      <!-- ÉVÉNEMENTS -->
       <div class="sidebar-box">
         <h3>📅 Prochains événements</h3>
         <div class="event-item">
@@ -229,17 +302,20 @@
         <a href="evenements.html" class="see-all" style="display:inline-block;margin-top:10px;">Voir tout →</a>
       </div>
 
+      <!-- PUB RESTAURANT avec image -->
       <div class="ad-std">
         <div class="ad-std-top"><span>PUBLICITÉ</span><span>●</span></div>
+        <div style="height:100px;background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&q=75');background-size:cover;background-position:center;margin:-8px 0 10px;border-radius:6px;overflow:hidden;"></div>
         <div class="ad-std-body">
-          <div class="ad-std-logo">BQ</div>
-          <h4>Boulangerie Centrale</h4>
-          <p>Pain frais chaque matin, pâtisseries artisanales.</p>
-          <a href="#" class="ad-std-cta">Nous contacter →</a>
-          <span class="ad-recrute">📍 Mboro Centre</span>
+          <div class="ad-std-logo">RC</div>
+          <h4>Restaurant La Côte</h4>
+          <p>Spécialités de poisson frais, terrasse vue mer, à Mboro-sur-Mer.</p>
+          <a href="#" class="ad-std-cta">Réserver une table →</a>
+          <span class="ad-recrute">📍 Mboro-sur-Mer · Front de mer</span>
         </div>
       </div>
 
+      <!-- PLUS LUS -->
       <div class="sidebar-box">
         <h3>🔥 Les plus lus</h3>
         <div class="most-read-item"><span class="mr-rank">01</span><div><h4>Coupure d'eau jeudi</h4><span>1 204 lectures</span></div></div>
@@ -247,25 +323,34 @@
         <div class="most-read-item"><span class="mr-rank">03</span><div><h4>ASC Jappo en demi-finale</h4><span>760 lectures</span></div></div>
       </div>
 
-      <div class="ad-placeholder">
-        <div class="ph-icon">📢</div>
-        <h4>Votre publicité ici</h4>
-        <p>Atteignez des milliers d'habitants de Mboro chaque semaine.</p>
-        <a href="mailto:pub@mboroactu.sn">Réserver cet espace →</a>
+      <!-- PUB PHARMACIE avec image -->
+      <div class="ad-std">
+        <div class="ad-std-top"><span>PUBLICITÉ</span><span>●</span></div>
+        <div style="height:80px;background-image:url('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=75');background-size:cover;background-position:center;margin:-8px 0 10px;border-radius:6px;overflow:hidden;"></div>
+        <div class="ad-std-body">
+          <div class="ad-std-logo" style="font-size:11px;">PH</div>
+          <h4>Pharmacie El Hadji Ndiaye</h4>
+          <p>Garde cette semaine — 24h/24. Médicaments, conseils, livraison.</p>
+          <a href="tel:+221774128309" class="ad-std-cta">Appeler : 77 412 83 09 →</a>
+          <span class="ad-recrute">📍 Av. Cheikh Ahmadou Bamba</span>
+        </div>
       </div>
 
+      <!-- TARIFS PUB -->
       <div class="ad-tarifs">
         <span class="ad-tarifs-title">📣 Annoncez sur MboroActu</span>
         <div class="tarif-row"><span class="t-name">Annonceur du mois</span><span class="t-price">15 000 FCFA</span></div>
-        <div class="tarif-row"><span class="t-name">Bannière standard</span><span class="t-price">8 000 FCFA</span></div>
-        <div class="tarif-row"><span class="t-name">Partenaire bande</span><span class="t-price">5 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Bannière image</span><span class="t-price">8 000 FCFA</span></div>
+        <div class="tarif-row"><span class="t-name">Pub inline liste</span><span class="t-price">6 000 FCFA</span></div>
         <div class="tarif-row"><span class="t-name">Article sponsorisé</span><span class="t-price">12 000 FCFA</span></div>
         <a href="mailto:pub@mboroactu.sn" class="tarif-cta">Réserver un espace →</a>
       </div>
+
     </aside>
   </div>
 </div>
 
+<!-- NEWSLETTER -->
 <div class="wrap" style="padding-bottom:60px;">
   <div class="newsletter">
     <div>
@@ -301,7 +386,7 @@
         <h4>Services</h4>
         <ul>
           <li><a href="voyageur.html">Espace Voyageur</a></li>
-          <li><a href="galerie.html">Galerie & Vidéo</a></li>
+          <li><a href="galerie.html">Galerie &amp; Vidéo</a></li>
           <li><a href="#">Newsletter</a></li>
           <li><a href="#">Publicité</a></li>
         </ul>
