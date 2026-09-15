@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MboroActu — Article</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.art-hero {
+  width: 100%; height: 420px;
+  background-size: cover; background-position: center;
+  background-color: var(--void);
+  position: relative;
+}
+.art-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,.55) 100%);
+}
+
+.art-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 40px;
+  padding: 48px 0 64px;
+  align-items: start;
+}
+
+/* Main article body */
+.art-body { min-width: 0; }
+
+.art-breadcrumb {
+  font-size: 12px; color: var(--muted);
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 20px;
+}
+.art-breadcrumb a { color: var(--amber); text-decoration: none; }
+.art-breadcrumb a:hover { text-decoration: underline; }
+
+.art-header { margin-bottom: 28px; }
+.art-header .tag { margin-bottom: 12px; display: inline-block; }
+.art-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 700; line-height: 1.18;
+  color: var(--ink); margin-bottom: 16px;
+}
+.art-meta-row {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 13px; color: var(--muted);
+  flex-wrap: wrap;
+}
+.art-meta-row .dot { color: var(--rule); }
+
+.art-excerpt {
+  font-size: 17px; line-height: 1.75;
+  color: var(--ink); font-weight: 500;
+  border-left: 3px solid var(--amber);
+  padding-left: 18px; margin-bottom: 32px;
+}
+
+.art-divider {
+  border: none; border-top: 1px solid var(--rule);
+  margin: 28px 0;
+}
+
+.art-content {
+  font-size: 16px; line-height: 1.85;
+  color: #2c2c3a;
+}
+.art-content p { margin-bottom: 20px; }
+.art-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 700;
+  color: var(--ink); margin: 32px 0 14px;
+}
+.art-content blockquote {
+  border-left: 3px solid var(--amber);
+  padding: 12px 20px;
+  background: var(--bone);
+  border-radius: 0 6px 6px 0;
+  margin: 24px 0;
+  font-style: italic; color: var(--muted);
+}
+
+/* Share bar */
+.art-share {
+  display: flex; align-items: center; gap: 10px;
+  padding: 20px 0; border-top: 1px solid var(--rule);
+  margin-top: 32px; flex-wrap: wrap;
+}
+.art-share-label { font-size: 13px; font-weight: 600; color: var(--muted); margin-right: 4px; }
+.btn-share {
+  padding: 8px 16px; border-radius: 20px;
+  font-size: 12px; font-weight: 600;
+  cursor: pointer; border: 1.5px solid var(--rule);
+  background: none; font-family: 'Inter', sans-serif;
+  color: var(--ink); transition: all .15s; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-share:hover { border-color: var(--amber); color: var(--amber); }
+.btn-share.whatsapp { background: #25D366; color: #fff; border-color: #25D366; }
+.btn-share.whatsapp:hover { opacity: .88; }
+
+/* Not found */
+.art-not-found {
+  text-align: center; padding: 80px 20px;
+  max-width: 480px; margin: 0 auto;
+}
+.art-not-found .nf-icon { font-size: 52px; margin-bottom: 16px; }
+.art-not-found h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; margin-bottom: 12px; color: var(--ink);
+}
+.art-not-found p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+/* Sidebar */
+.art-sidebar {}
+.art-sidebar-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 12px; overflow: hidden;
+  margin-bottom: 24px;
+}
+.art-sidebar-card-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em;
+  color: var(--muted);
+}
+.art-sidebar-list {}
+.art-sidebar-item {
+  display: flex; gap: 12px; padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none; transition: background .15s;
+}
+.art-sidebar-item:last-child { border-bottom: none; }
+.art-sidebar-item:hover { background: var(--bone); }
+.art-sidebar-thumb {
+  width: 60px; height: 44px; border-radius: 5px;
+  background-size: cover; background-position: center;
+  background-color: var(--bg); flex-shrink: 0;
+}
+.art-sidebar-title {
+  font-size: 13px; font-weight: 600; color: var(--ink);
+  line-height: 1.4; display: -webkit-box;
+  -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+}
+.art-sidebar-meta { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* Ad sidebar */
+.art-ad {
+  background: var(--void);
+  border-radius: 12px; padding: 24px;
+  text-align: center; color: rgba(255,255,255,.5);
+  font-size: 12px;
+}
+.art-ad-label { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+.art-ad-img { width: 100%; border-radius: 8px; margin-bottom: 10px; height: 140px; background: rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center; }
+
+@media(max-width: 860px) {
+  .art-layout { grid-template-columns: 1fr; gap: 0; padding: 32px 0 48px; }
+  .art-sidebar { display: none; }
+  .art-hero { height: 260px; }
+}
+@media(max-width: 600px) {
+  .art-hero { height: 210px; }
+  .art-body { padding: 0; }
+  .art-breadcrumb { font-size: 11px; flex-wrap: wrap; margin-bottom: 14px; }
+  .art-title { font-size: 22px; line-height: 1.25; }
+  .art-excerpt { font-size: 15px; padding-left: 14px; margin-bottom: 24px; }
+  .art-content { font-size: 15px; line-height: 1.8; }
+  .art-meta-row { font-size: 12px; gap: 8px; }
+  .art-share { gap: 8px; }
+  .btn-share { font-size: 11px; padding: 7px 12px; }
+  .art-layout { padding: 24px 0 40px; }
+}
+@media(max-width: 380px) {
+  .art-hero { height: 180px; }
+  .art-title { font-size: 19px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="topbar">
+    <a href="index.html" class="logo">Mboro<span>Actu</span></a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="evenements.html">Événements</a>
+      <a href="culture.html">Culture</a>
+      <a href="sport.html">Sport</a>
+      <a href="economie.html">Économie</a>
+      <a href="education.html">Éducation</a>
+      <a href="voyageur.html" class="highlight">Voyageur</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Accueil</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="evenements.html">Événements</a>
+    <a href="culture.html">Culture</a>
+    <a href="sport.html">Sport</a>
+    <a href="economie.html">Économie</a>
+    <a href="education.html">Éducation</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="voyageur.html" class="highlight">Espace Voyageur</a>
+  </nav>
+  <div class="header-ticker">
+    <span class="ht-label">Actus</span>
+    <div class="ht-wrap"><div class="ht-track">
+      <a href="actualites.html" class="ht-item">ICS Mboro : nouveau plan d'investissement 2026 annoncé</a>
+      <span class="ht-sep"> · </span>
+      <a href="culture.html" class="ht-item">Festival de la Grande Côte : du 3 au 5 octobre</a>
+      <span class="ht-sep"> · </span>
+      <a href="sport.html" class="ht-item">ASC Jappo : qualification en demi-finale</a>
+      <span class="ht-sep"> · </span>
+      <a href="economie.html" class="ht-item">Pêcheurs de Mboro : demande urgente d'extension portuaire</a>
+      <span class="ht-sep"> · </span>
+      <a href="actualites.html" class="ht-item">ICS Mboro : nouveau plan d'investissement 2026 annoncé</a>
+      <span class="ht-sep"> · </span>
+      <a href="culture.html" class="ht-item">Festival de la Grande Côte : du 3 au 5 octobre</a>
+      <span class="ht-sep"> · </span>
+      <a href="sport.html" class="ht-item">ASC Jappo : qualification en demi-finale</a>
+      <span class="ht-sep"> · </span>
+      <a href="economie.html" class="ht-item">Pêcheurs de Mboro : demande urgente d'extension portuaire</a>
+    </div></div>
+  </div>
+</header>
+
+<!-- HERO IMAGE -->
+<div class="art-hero" id="artHero"></div>
+
+<!-- ARTICLE CONTENT -->
+<div class="wrap">
+  <div class="art-layout">
+
+    <main class="art-body" id="artBody">
+      <!-- Filled by JS -->
+    </main>
+
+    <aside class="art-sidebar">
+      <div class="art-sidebar-card">
+        <div class="art-sidebar-card-header">À lire aussi</div>
+        <div class="art-sidebar-list" id="relatedList">
+          <a href="article.html?slug=festival-grande-cote" class="art-sidebar-item">
+            <div class="art-sidebar-thumb" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&q=75')"></div>
+            <div>
+              <div class="art-sidebar-title">Festival de la Grande Côte revient en septembre</div>
+              <div class="art-sidebar-meta">Culture · Il y a 1j</div>
+            </div>
+          </a>
+          <a href="article.html?slug=asc-jappo-demi-finale" class="art-sidebar-item">
+            <div class="art-sidebar-thumb" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200&q=75')"></div>
+            <div>
+              <div class="art-sidebar-title">ASC Jappo décroche la qualification en demi-finale</div>
+              <div class="art-sidebar-meta">Sport · Il y a 2j</div>
+            </div>
+          </a>
+          <a href="article.html?slug=pecheurs-quais" class="art-sidebar-item">
+            <div class="art-sidebar-thumb" style="background-image:url('https://images.unsplash.com/photo-1510016830-f755e0b28aa8?w=200&q=75')"></div>
+            <div>
+              <div class="art-sidebar-title">Les pêcheurs de Mboro demandent plus de quais</div>
+              <div class="art-sidebar-meta">Économie · Hier</div>
+            </div>
+          </a>
+          <a href="article.html?slug=vacances-numeriques-2026" class="art-sidebar-item">
+            <div class="art-sidebar-thumb" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=200&q=75')"></div>
+            <div>
+              <div class="art-sidebar-title">Vacances Numériques 2026 : inscriptions ouvertes</div>
+              <div class="art-sidebar-meta">Éducation · Il y a 3j</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="art-ad">
+        <div class="art-ad-label">Publicité</div>
+        <div class="art-ad-img">🏪</div>
+        <div style="color:rgba(255,255,255,.7); font-size:13px; font-weight:600; margin-bottom:6px;">Votre commerce ici</div>
+        <div style="font-size:11px;">Contactez MboroActu pour réserver cet espace publicitaire.</div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Mboro<span>Actu</span></span>
+      <p>Le portail d'actualités locales de Mboro, Sénégal. Restez connecté à votre commune.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap footer-bottom-inner">
+      <span>© 2026 MboroActu — Mboro, Sénégal</span>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+/* ============================================================
+   STATIC ARTICLES DATABASE
+   Articles codés en dur présents sur le site (homepage, etc.)
+============================================================ */
+const STATIC_ARTICLES = {
+  "coupure-eau": {
+    title: "Coupure d\u2019eau pr\u00e9vue jeudi dans plusieurs quartiers de Mboro",
+    category: "Actualit\u00e9s",
+    catClass: "actu",
+    date: "2026-09-15",
+    readTime: "2 min",
+    imageUrl: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1200&q=80",
+    excerpt: "La S\u00e9n\u00e9galaise des Eaux (SDE) annonce une interruption de service le jeudi 18 septembre 2026 de 8h \u00e0 18h dans les quartiers de Mboro Centre, Escale et Cit\u00e9 ICS.",
+    content: `<p>La S\u00e9n\u00e9galaise des Eaux (SDE) informe les habitants de Mboro d\u2019une interruption programm\u00e9e de la distribution d\u2019eau potable le <strong>jeudi 18 septembre 2026 de 8h \u00e0 18h</strong> dans les quartiers suivants : Mboro Centre, Escale, Cit\u00e9 ICS et les zones avoisinantes.</p>
+<p>Cette coupure est rendue n\u00e9cessaire par des travaux de maintenance sur le r\u00e9seau principal d\u2019alimentation. Les \u00e9quipes techniques de la SDE proc\u00e9deront au remplacement d\u2019une section de conduite v\u00e9tuste qui alimente une grande partie de la commune.</p>
+<h3>Quartiers concern\u00e9s</h3>
+<p>Les quartiers suivants seront affect\u00e9s : Mboro Centre, Quartier Escale, Cit\u00e9 ICS Nord et Sud, ainsi que les lotissements p\u00e9riph\u00e9riques situ\u00e9s le long de la route de Thi\u00e8s.</p>
+<blockquote>\u00ab Nous conseillons aux habitants de stocker de l\u2019eau d\u00e8s la veille au soir pour faire face \u00e0 cette interruption. \u00bb \u2014 Communiqu\u00e9 SDE</blockquote>
+<p>Le retour \u00e0 la normale est pr\u00e9vu en fin de journ\u00e9e, entre 17h et 18h selon l\u2019avancement des travaux. En cas de prolongation, une nouvelle communication sera diffus\u00e9e via les canaux habituels.</p>
+<p>Pour toute urgence, les habitants peuvent contacter le service client SDE au <strong>+221 33 839 38 00</strong> ou se rendre \u00e0 l\u2019agence SDE la plus proche.</p>`
+  },
+  "festival-grande-cote": {
+    title: "Festival de la Grande C\u00f4te revient en septembre",
+    category: "Culture",
+    catClass: "culture",
+    date: "2026-09-14",
+    readTime: "3 min",
+    imageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&q=80",
+    excerpt: "La sixi\u00e8me \u00e9dition du Festival de la Grande C\u00f4te se d\u00e9roulera \u00e0 Mboro-sur-Mer du 3 au 5 octobre 2026, avec une programmation m\u00ealant musique traditionnelle s\u00e9n\u00e9galaise et artistes contemporains.",
+    content: `<p>La sixi\u00e8me \u00e9dition du <strong>Festival de la Grande C\u00f4te</strong> se tiendra \u00e0 Mboro-sur-Mer du <strong>3 au 5 octobre 2026</strong>. Organis\u00e9e par l\u2019association culturelle Teranga Arts en partenariat avec la mairie de Mboro, cette \u00e9dition s\u2019annonce comme la plus ambitieuse \u00e0 ce jour.</p>
+<p>Le festival, qui c\u00e9l\u00e8bre la culture des peuples de la Grande C\u00f4te s\u00e9n\u00e9galaise, accueillera cette ann\u00e9e des artistes venus de Mboro, Thi\u00e8s, Dakar et de la diaspora. La programmation m\u00eale musique traditionnelle (sabar, tama, kora), arts plastiques et spectacles de danse contemporaine.</p>
+<h3>Programme des trois jours</h3>
+<p>Le vendredi 3 octobre sera d\u00e9di\u00e9 aux <strong>arts visuels et \u00e0 l\u2019artisanat local</strong>, avec des expositions en plein air sur la plage de Mboro-sur-Mer. Le samedi 4 octobre verra se succ\u00e9der les concerts \u00e0 partir de 16h. Le dimanche cl\u00f4turera avec un grand bal populaire ouvert \u00e0 tous.</p>
+<blockquote>\u00ab Ce festival, c\u2019est notre fa\u00e7on de dire que Mboro a une identit\u00e9 culturelle forte, unique sur la Grande C\u00f4te. \u00bb \u2014 Organisateurs</blockquote>
+<p>L\u2019entr\u00e9e est gratuite pour toutes les animations en plein air. Les billets pour les concerts en salle seront disponibles \u00e0 la mairie de Mboro \u00e0 partir du 20 septembre 2026.</p>`
+  },
+  "asc-jappo-demi-finale": {
+    title: "ASC Jappo d\u00e9croche la qualification en demi-finale",
+    category: "Sport",
+    catClass: "sport",
+    date: "2026-09-13",
+    readTime: "2 min",
+    imageUrl: "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&q=80",
+    excerpt: "Victoire 2-0 face \u00e0 l\u2019ASC Diamniadio. La rencontre a r\u00e9uni plus de 800 supporters sur le terrain de Mboro. Les demi-finales auront lieu le 20 septembre.",
+    content: `<p>L\u2019<strong>ASC Jappo de Mboro</strong> a d\u00e9croch\u00e9 sa qualification pour les demi-finales du championnat r\u00e9gional de Thi\u00e8s apr\u00e8s une victoire convaincante 2-0 face \u00e0 l\u2019ASC Diamniadio, samedi 13 septembre 2026 sur le terrain municipal de Mboro.</p>
+<p>La rencontre a r\u00e9uni plus de 800 supporters, une affluence record pour un match de championnat \u00e0 Mboro. L\u2019ambiance \u00e9lectrique a galvanis\u00e9 les joueurs locaux qui ont domin\u00e9 leur adversaire de bout en bout.</p>
+<h3>Les buts</h3>
+<p>Le premier but a \u00e9t\u00e9 inscrit \u00e0 la 23e minute par <strong>Ibrahima Sow</strong> d\u2019une belle frappe crois\u00e9e du pied gauche. Le second but, sign\u00e9 <strong>Mamadou Diallo</strong> \u00e0 la 67e minute, a scell\u00e9 la qualification mborossoise.</p>
+<blockquote>\u00ab On a travaill\u00e9 dur toute la saison pour ce moment. Mboro m\u00e9ritait d\u2019\u00eatre en demi-finale. \u00bb \u2014 Le capitaine de l\u2019ASC Jappo</blockquote>
+<p>Les demi-finales sont programm\u00e9es pour le <strong>samedi 20 septembre 2026</strong>. L\u2019ASC Jappo affrontera l\u2019ASC L\u00e9ona de Tivaouane, l\u2019une des \u00e9quipes les plus redoutables de la r\u00e9gion.</p>`
+  },
+  "vacances-numeriques-2026": {
+    title: "Vacances Num\u00e9riques 2026 : inscriptions ouvertes",
+    category: "\u00c9ducation",
+    catClass: "edu",
+    date: "2026-09-12",
+    readTime: "2 min",
+    imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80",
+    excerpt: "Le programme Vacances Num\u00e9riques 2026, financ\u00e9 par le Minist\u00e8re de l\u2019\u00c9ducation nationale, ouvre ses inscriptions pour les jeunes de 12 \u00e0 25 ans \u00e0 Mboro.",
+    content: `<p>Le programme <strong>Vacances Num\u00e9riques 2026</strong>, initié par le Minist\u00e8re de l\u2019\u00c9ducation nationale du S\u00e9n\u00e9gal, lance ses inscriptions pour les jeunes de <strong>12 \u00e0 25 ans</strong> r\u00e9sidant \u00e0 Mboro et dans les communes environnantes.</p>
+<p>Les sessions se d\u00e9rouleront au Centre Culturel de Mboro du 1er au 31 octobre 2026. Les participants pourront choisir parmi plusieurs modules : initiation \u00e0 l\u2019informatique, cr\u00e9ation de sites web, graphisme num\u00e9rique, et r\u00e9paration de t\u00e9l\u00e9phones.</p>
+<h3>Comment s\u2019inscrire ?</h3>
+<p>Les inscriptions se font directement \u00e0 la mairie de Mboro ou \u00e0 l\u2019inspection de l\u2019\u00c9ducation de Tivaouane. Munissez-vous d\u2019une pi\u00e8ce d\u2019identit\u00e9 et d\u2019un justificatif de r\u00e9sidence. Les places sont limit\u00e9es \u00e0 120 participants.</p>
+<blockquote>\u00ab L\u2019objectif est de pr\u00e9parer nos jeunes aux m\u00e9tiers du num\u00e9rique, secteur en plein essor au S\u00e9n\u00e9gal. \u00bb \u2014 Inspection de l\u2019\u00c9ducation de Tivaouane</blockquote>
+<p>Le programme est enti\u00e8rement <strong>gratuit</strong>. Des attestations de formation reconnues par le Minist\u00e8re seront d\u00e9livr\u00e9es \u00e0 l\u2019issue des sessions.</p>`
+  },
+  "pecheurs-quais": {
+    title: "Les p\u00eacheurs de Mboro demandent plus de quais",
+    category: "\u00c9conomie",
+    catClass: "eco",
+    date: "2026-09-14",
+    readTime: "3 min",
+    imageUrl: "https://images.unsplash.com/photo-1510016830-f755e0b28aa8?w=1200&q=80",
+    excerpt: "Le groupement des p\u00eacheurs artisanaux de Mboro a d\u00e9pos\u00e9 une requ\u00eate formelle aupr\u00e8s de la Direction des P\u00eaches pour l\u2019extension du quai de d\u00e9barquement.",
+    content: `<p>Le <strong>Groupement d\u2019Int\u00e9r\u00eat \u00c9conomique (GIE) des P\u00eacheurs Artisanaux de Mboro</strong> a d\u00e9pos\u00e9 une requ\u00eate formelle aupr\u00e8s de la Direction des P\u00eaches et de l\u2019Aquaculture du S\u00e9n\u00e9gal, demandant l\u2019extension urgente du quai de d\u00e9barquement de Mboro-sur-Mer.</p>
+<p>Selon les responsables du groupement, la capacit\u00e9 d\u2019accueil actuelle du quai est largement insuffisante face \u00e0 l\u2019augmentation du nombre de pirogues en activit\u00e9. Lors des grandes mar\u00e9es, les embarcations sont contraintes de s\u2019amarrer \u00e0 plusieurs kilom\u00e8tres du point de d\u00e9barquement habituel.</p>
+<h3>Un secteur vital pour Mboro</h3>
+<p>La p\u00eache artisanale emploie directement plus de <strong>1 200 personnes</strong> \u00e0 Mboro et fait vivre indirectement plusieurs milliers de familles. Le GIE estime que l\u2019extension du quai pourrait augmenter les revenus du secteur de 30% en r\u00e9duisant les pertes post-capture.</p>
+<blockquote>\u00ab Chaque jour sans quai suffisant, c\u2019est des tonnes de poisson perdues et des familles qui souffrent. \u00bb \u2014 Pr\u00e9sident du GIE des p\u00eacheurs</blockquote>
+<p>La Direction des P\u00eaches a accus\u00e9 r\u00e9ception de la requ\u00eate et a promis une r\u00e9ponse officielle dans un d\u00e9lai de deux mois. Une d\u00e9l\u00e9gation de p\u00eacheurs sera re\u00e7ue \u00e0 Dakar le 25 septembre prochain.</p>`
+  },
+  "ligne-bus-thies": {
+    title: "Nouvelle ligne de bus reliant Mboro \u00e0 Thi\u00e8s",
+    category: "Actualit\u00e9s",
+    catClass: "actu",
+    date: "2026-09-13",
+    readTime: "2 min",
+    imageUrl: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1200&q=80",
+    excerpt: "Le Conseil Ex\u00e9cutif des Transports Urbains (CETUD) a valid\u00e9 la cr\u00e9ation d\u2019une nouvelle ligne de bus express reliant Mboro \u00e0 Thi\u00e8s, avec 6 rotations par jour.",
+    content: `<p>Le <strong>Conseil Ex\u00e9cutif des Transports Urbains (CETUD)</strong> a officiellement valid\u00e9 la cr\u00e9ation d\u2019une nouvelle ligne de bus express reliant <strong>Mboro \u00e0 Thi\u00e8s</strong> en passant par M\u00e9kh\u00e9. Cette d\u00e9cision fait suite \u00e0 une longue mobilisation des habitants et des \u00e9lus locaux.</p>
+<p>La ligne, qui d\u00e9marrera le 1er novembre 2026, proposera <strong>6 rotations par jour</strong> dans chaque sens, avec des d\u00e9parts de Mboro \u00e0 6h, 8h, 10h, 14h, 16h et 18h. Le trajet Mboro-Thi\u00e8s prendra environ 45 minutes.</p>
+<h3>Des tarifs accessibles</h3>
+<p>Le prix du billet a \u00e9t\u00e9 fix\u00e9 \u00e0 <strong>1 200 FCFA</strong> pour le trajet complet Mboro-Thi\u00e8s, soit une \u00e9conomie significative par rapport aux tarifs pratiqu\u00e9s par les taxis-brousse. Des abonnements mensuels seront \u00e9galement propos\u00e9s.</p>
+<blockquote>\u00ab Cette ligne va transformer la vie quotidienne des habitants de Mboro qui travaillent \u00e0 Thi\u00e8s. \u00bb \u2014 Maire de Mboro</blockquote>
+<p>Les bus seront \u00e9quip\u00e9s de la climatisation et de la connexion Wi-Fi. Une application mobile permettra de consulter les horaires en temps r\u00e9el d\u00e8s le lancement de la ligne.</p>`
+  },
+  "nuit-des-tambours": {
+    title: "La Nuit des tambours revient pour sa 4e \u00e9dition",
+    category: "Culture",
+    catClass: "culture",
+    date: "2026-09-12",
+    readTime: "2 min",
+    imageUrl: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&q=80",
+    excerpt: "La quatri\u00e8me \u00e9dition de la Nuit des tambours se tiendra le 27 septembre 2026 \u00e0 la Place de l\u2019Ind\u00e9pendance de Mboro, avec 12 groupes de percussions.",
+    content: `<p>La <strong>Nuit des tambours</strong> revient pour sa quatri\u00e8me \u00e9dition le <strong>27 septembre 2026</strong> \u00e0 la Place de l\u2019Ind\u00e9pendance de Mboro. Organis\u00e9e par l\u2019association Rythmes de Mboro, cette nuit musicale enti\u00e8rement d\u00e9di\u00e9e aux percussions africaines est devenue l\u2019un des \u00e9v\u00e9nements culturels les plus attendus de la commune.</p>
+<p>Douze groupes de percussions ont confirm\u00e9 leur participation, repr\u00e9sentant diverses traditions rythmiques du S\u00e9n\u00e9gal : sabar, djemb\u00e9, bougarabou, tama et bien d\u2019autres. Des groupes venus de Thi\u00e8s, Louga et Saint-Louis feront le d\u00e9placement pour se joindre aux artistes locaux.</p>
+<h3>Une nuit ouverte \u00e0 tous</h3>
+<p>L\u2019\u00e9v\u00e9nement d\u00e9butera \u00e0 <strong>20h</strong> et se prolongera jusqu\u2019\u00e0 l\u2019aube. L\u2019entr\u00e9e est enti\u00e8rement gratuite et ouverte \u00e0 tous.</p>
+<blockquote>\u00ab Le tambour, c\u2019est le c\u0153ur qui bat de notre culture. Cette nuit, Mboro r\u00e9sonne. \u00bb \u2014 Pr\u00e9sidente de Rythmes de Mboro</blockquote>
+<p>Pour les \u00e9ditions pr\u00e9c\u00e9dentes, la Nuit des tambours a rassembl\u00e9 jusqu\u2019\u00e0 3 000 personnes. Les organisateurs esp\u00e8rent d\u00e9passer ce chiffre cette ann\u00e9e.</p>`
+  },
+  "grand-magal-mboro": {
+    title: "Grand Magal de Touba : les pr\u00e9paratifs \u00e0 Mboro",
+    category: "Actualit\u00e9s",
+    catClass: "actu",
+    date: "2026-09-11",
+    readTime: "3 min",
+    imageUrl: "https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1200&q=80",
+    excerpt: "\u00c0 quelques semaines du Grand Magal de Touba, les comit\u00e9s d\u2019organisation de Mboro s\u2019activent pour coordonner le d\u00e9placement de plusieurs milliers de p\u00e8lerins mourides.",
+    content: `<p>\u00c0 quelques semaines du <strong>Grand Magal de Touba</strong>, les comit\u00e9s d\u2019organisation de Mboro s\u2019activent pour coordonner le d\u00e9placement de la communaut\u00e9 mouride locale. Chaque ann\u00e9e, des milliers d\u2019habitants de Mboro effectuent le p\u00e8lerinage vers la ville sainte de Touba pour comm\u00e9morer l\u2019exil du Cheikh Ahmadou Bamba.</p>
+<p>Le comit\u00e9 d\u2019organisation de Mboro, pr\u00e9sid\u00e9 par le Khalife du quartier Escale, a tenu sa premi\u00e8re r\u00e9union de pr\u00e9paration le 10 septembre. Plusieurs th\u00e8mes ont \u00e9t\u00e9 abord\u00e9s : transport, h\u00e9bergement, s\u00e9curit\u00e9 et repr\u00e9sentation de la communaut\u00e9 mborossoise \u00e0 Touba.</p>
+<h3>Des convois organis\u00e9s depuis Mboro</h3>
+<p>Comme chaque ann\u00e9e, des <strong>convois de cars et de bus</strong> seront organis\u00e9s depuis le carrefour principal de Mboro. Les inscriptions sont ouvertes aupr\u00e8s des dahiras locales. Le co\u00fbt du transport aller-retour est estim\u00e9 \u00e0 3 000 FCFA par personne.</p>
+<blockquote>\u00ab Le Magal, c\u2019est le moment o\u00f9 toute la communaut\u00e9 de Mboro se retrouve autour de sa foi. C\u2019est sacr\u00e9. \u00bb \u2014 Membre du comit\u00e9 d\u2019organisation</blockquote>
+<p>La date exacte du Magal 2026 sera confirm\u00e9e apr\u00e8s l\u2019observation de la lune. Les organisateurs se pr\u00e9parent pour une mobilisation d\u2019au moins <strong>5 000 p\u00e8lerins</strong> depuis la commune de Mboro et ses environs.</p>`
+  }
+};
+
+/* ============================================================
+   RENDER ARTICLE
+============================================================ */
+(function () {
+  const params  = new URLSearchParams(location.search);
+  const id      = params.get('id');
+  const slug    = params.get('slug');
+  const hero    = document.getElementById('artHero');
+  const body    = document.getElementById('artBody');
+
+  const CAT_CLASS = {
+    'Actualités':'actu','Culture':'culture','Sport':'sport',
+    'Économie':'eco','Éducation':'edu','Événements':'event'
+  };
+
+  function render(art) {
+    // Page title
+    document.title = art.title + ' — MboroActu';
+
+    // Hero
+    if (art.imageUrl) {
+      const safe = /^(https?:\/\/|data:image\/)/.test(art.imageUrl) ? art.imageUrl : '';
+      if (safe) hero.style.backgroundImage = `url('${safe}')`;
+    }
+
+    const cls   = CAT_CLASS[art.category] || 'actu';
+    const date  = art.date
+      ? new Date(art.date).toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long',year:'numeric'})
+      : '';
+
+    const shareUrl  = encodeURIComponent(location.href);
+    const shareText = encodeURIComponent(art.title + ' — MboroActu');
+
+    body.innerHTML = `
+      <div class="art-breadcrumb">
+        <a href="index.html">Accueil</a>
+        <span>›</span>
+        <a href="actualites.html">Actualités</a>
+        <span>›</span>
+        <span>${escHtml(art.category)}</span>
+      </div>
+      <div class="art-header">
+        <span class="tag ${cls}">${escHtml(art.category)}</span>
+        <h1 class="art-title">${escHtml(art.title)}</h1>
+        <div class="art-meta-row">
+          <span>${date}</span>
+          ${art.readTime ? `<span class="dot">·</span><span>${escHtml(art.readTime)} de lecture</span>` : ''}
+        </div>
+      </div>
+      <p class="art-excerpt">${escHtml(art.excerpt)}</p>
+      <hr class="art-divider">
+      <div class="art-content" id="artContent"></div>
+      <div class="art-share">
+        <span class="art-share-label">Partager :</span>
+        <a class="btn-share whatsapp" href="https://api.whatsapp.com/send?text=${shareText}%20${shareUrl}" target="_blank" rel="noopener">WhatsApp</a>
+        <button class="btn-share" onclick="copyLink()">🔗 Copier le lien</button>
+        <a class="btn-share" href="actualites.html">← Retour aux actualités</a>
+      </div>`;
+
+    // Inject content safely — it's our own trusted static HTML or sanitized text
+    const contentEl = document.getElementById('artContent');
+    if (art.content) {
+      if (id) {
+        // Dynamic article from admin: content is plain text, display as paragraphs
+        art.content.split('\n').filter(l => l.trim()).forEach(line => {
+          const p = document.createElement('p');
+          p.textContent = line;
+          contentEl.appendChild(p);
+        });
+      } else {
+        // Static articles: content is trusted HTML written by us
+        contentEl.innerHTML = art.content;
+      }
+    }
+  }
+
+  function notFound() {
+    hero.style.background = 'var(--void)';
+    body.innerHTML = `
+      <div class="art-not-found">
+        <div class="nf-icon">📭</div>
+        <h2>Article introuvable</h2>
+        <p>Cet article n'existe pas ou a été supprimé.<br>Revenez à la liste des actualités.</p>
+        <a href="actualites.html" class="btn-primary" style="display:inline-flex;margin-top:24px;">← Voir les actualités</a>
+      </div>`;
+  }
+
+  function escHtml(str) {
+    const d = document.createElement('span');
+    d.textContent = String(str || '');
+    return d.innerHTML;
+  }
+
+  // Try localStorage first (dynamic articles from admin)
+  if (id) {
+    try {
+      const arts = JSON.parse(localStorage.getItem('mboroactu_articles')) || [];
+      const art  = arts.find(a => a.id === id);
+      art ? render(art) : notFound();
+    } catch(e) { notFound(); }
+    return;
+  }
+
+  // Static articles by slug
+  if (slug && STATIC_ARTICLES[slug]) {
+    render(STATIC_ARTICLES[slug]);
+    return;
+  }
+
+  notFound();
+})();
+
+window.copyLink = function () {
+  navigator.clipboard.writeText(location.href).then(() => {
+    const btn = document.querySelector('.btn-share[onclick]');
+    if (btn) { btn.textContent = '✅ Copié !'; setTimeout(() => btn.textContent = '🔗 Copier le lien', 2000); }
+  });
+};
+</script>
+</body>
+</html>

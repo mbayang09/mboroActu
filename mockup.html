@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MboroActu — Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: linear-gradient(135deg, #0B1528 0%, #1a2e5a 50%, #0B1528 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ambient glow */
+body::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse, rgba(200,88,5,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Top label */
+.brand-label {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: rgba(255,255,255,.45);
+  letter-spacing: .04em;
+  margin-bottom: 52px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.brand-label span { color: #C85805; font-weight: 700; }
+.brand-label::before, .brand-label::after {
+  content: "";
+  display: block;
+  width: 40px; height: 1px;
+  background: rgba(255,255,255,.2);
+}
+
+/* Stage */
+.stage {
+  display: flex;
+  align-items: flex-end;
+  gap: 32px;
+  position: relative;
+}
+
+/* ============ LAPTOP ============ */
+.laptop {
+  position: relative;
+  z-index: 2;
+}
+.laptop-screen-wrap {
+  width: 600px;
+  background: #1a1a2e;
+  border-radius: 14px 14px 0 0;
+  border: 2px solid #2a2a4a;
+  border-bottom: none;
+  padding: 10px 10px 0;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.06),
+    0 40px 80px rgba(0,0,0,.7),
+    0 20px 40px rgba(0,0,0,.5);
+  position: relative;
+}
+.laptop-screen-wrap::before {
+  content: "";
+  display: block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  margin: 0 auto 8px;
+}
+.laptop-screen {
+  width: 100%;
+  height: 340px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #F6F3EC;
+  position: relative;
+}
+.laptop-base {
+  width: 660px;
+  height: 18px;
+  background: linear-gradient(to bottom, #2a2a4a, #1a1a2e);
+  border-radius: 0 0 4px 4px;
+  margin-left: -32px;
+  border: 2px solid #2a2a4a;
+  border-top: none;
+  position: relative;
+}
+.laptop-base::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 4px;
+  background: #111;
+  border-radius: 0 0 4px 4px;
+}
+.laptop-foot {
+  width: 700px;
+  height: 6px;
+  background: linear-gradient(to bottom, #111, #0a0a0a);
+  border-radius: 0 0 8px 8px;
+  margin-left: -50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.5);
+}
+
+/* ============ PHONE ============ */
+.phone {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 24px;
+}
+.phone-left { transform: rotate(-4deg) translateY(-10px); }
+.phone-right { transform: rotate(4deg) translateY(-10px); }
+
+.phone-frame {
+  width: 148px;
+  height: 290px;
+  background: linear-gradient(160deg, #1f1f35, #111122);
+  border-radius: 28px;
+  border: 2px solid rgba(255,255,255,.12);
+  padding: 14px 6px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.05),
+    inset 0 0 0 1px rgba(255,255,255,.03),
+    0 30px 60px rgba(0,0,0,.7),
+    0 10px 30px rgba(0,0,0,.5);
+  position: relative;
+}
+/* Notch */
+.phone-frame::before {
+  content: "";
+  position: absolute;
+  top: 8px; left: 50%;
+  transform: translateX(-50%);
+  width: 40px; height: 5px;
+  background: rgba(255,255,255,.12);
+  border-radius: 3px;
+  z-index: 10;
+}
+/* Side buttons */
+.phone-frame::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 60px;
+  width: 3px; height: 40px;
+  background: rgba(255,255,255,.1);
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 50px 0 rgba(255,255,255,.1);
+}
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #F6F3EC;
+}
+
+/* ============ SCREEN CONTENT — LAPTOP ============ */
+.ls-header {
+  background: #0B1528;
+  padding: 7px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ls-logo { font-family: 'Playfair Display', serif; font-size: 13px; font-weight: 700; color: #fff; font-style: italic; }
+.ls-logo span { color: #C85805; }
+.ls-nav { display: flex; gap: 10px; }
+.ls-nav a { font-size: 8px; color: rgba(255,255,255,.6); text-decoration: none; }
+.ls-ticker { background: #fff; border-top: 1px solid #e5e7eb; height: 14px; display: flex; align-items: center; padding: 0 10px; gap: 8px; overflow: hidden; }
+.ls-ticker-label { background: #C85805; color: #fff; font-size: 6px; font-weight: 700; padding: 2px 6px; border-radius: 2px; white-space: nowrap; }
+.ls-ticker-text { font-size: 7px; color: #1A1A2E; white-space: nowrap; }
+
+/* Hero laptop */
+.ls-hero {
+  height: 160px;
+  background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&q=80');
+  background-size: cover;
+  background-position: center 40%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+.ls-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11,21,40,.95) 0%, rgba(11,21,40,.5) 50%, rgba(11,21,40,.1) 100%);
+}
+.ls-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 12px 14px;
+}
+.ls-hero-tag { display: inline-block; background: #C85805; color: #fff; font-size: 6px; font-weight: 700; padding: 2px 6px; border-radius: 2px; margin-bottom: 4px; }
+.ls-hero-title { font-family: 'Playfair Display', serif; font-size: 12px; font-weight: 700; font-style: italic; color: #fff; line-height: 1.2; margin-bottom: 4px; max-width: 280px; }
+.ls-hero-meta { font-size: 6px; color: rgba(255,255,255,.5); }
+.ls-hero-dots { position: absolute; bottom: 8px; right: 14px; z-index: 1; display: flex; gap: 4px; }
+.ls-hero-dot { width: 5px; height: 5px; border-radius: 3px; background: rgba(255,255,255,.35); }
+.ls-hero-dot.active { background: #C85805; width: 14px; }
+
+/* Cards below hero */
+.ls-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 10px 14px; background: #F6F3EC; }
+.ls-card { background: #fff; border-radius: 5px; overflow: hidden; border: 1px solid #e5e7eb; }
+.ls-card-img { height: 44px; background-size: cover; background-position: center; }
+.ls-card-body { padding: 5px 6px; }
+.ls-card-tag { display: inline-block; font-size: 5px; font-weight: 700; padding: 1px 4px; border-radius: 2px; margin-bottom: 2px; }
+.ls-card-tag.actu { background: rgba(200,88,5,.12); color: #C85805; }
+.ls-card-tag.cult { background: rgba(126,87,194,.12); color: #7E57C2; }
+.ls-card-tag.sport { background: rgba(33,150,243,.12); color: #2196F3; }
+.ls-card-tag.eco { background: rgba(76,175,80,.12); color: #4CAF50; }
+.ls-card-title { font-size: 6.5px; font-weight: 600; line-height: 1.3; color: #1A1A2E; }
+
+/* ============ SCREEN CONTENT — PHONE ============ */
+.ps-header {
+  background: #0B1528;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ps-logo { font-family: 'Playfair Display', serif; font-size: 10px; font-weight: 700; color: #fff; font-style: italic; }
+.ps-logo span { color: #C85805; }
+.ps-hamburger { color: rgba(255,255,255,.7); font-size: 10px; }
+
+.ps-hero {
+  height: 140px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+.ps-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11,21,40,.95) 0%, rgba(11,21,40,.3) 60%, transparent 100%);
+}
+.ps-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 8px 10px;
+}
+.ps-hero-tag { display: inline-block; font-size: 5px; font-weight: 700; color: #C85805; letter-spacing: .08em; margin-bottom: 3px; text-transform: uppercase; }
+.ps-hero-title { font-family: 'Playfair Display', serif; font-size: 9.5px; font-weight: 700; font-style: italic; color: #fff; line-height: 1.25; }
+.ps-hero-dots { display: flex; gap: 3px; margin-top: 6px; }
+.ps-hero-dot { width: 4px; height: 4px; border-radius: 2px; background: rgba(255,255,255,.35); }
+.ps-hero-dot.active { background: #C85805; width: 12px; }
+
+.ps-cards { padding: 8px; display: flex; flex-direction: column; gap: 6px; background: #F6F3EC; }
+.ps-card { background: #fff; border-radius: 5px; overflow: hidden; border: 1px solid #e5e7eb; display: flex; }
+.ps-card-img { width: 50px; height: 42px; background-size: cover; background-position: center; flex-shrink: 0; }
+.ps-card-body { padding: 5px 7px; }
+.ps-card-tag { display: inline-block; font-size: 5px; font-weight: 700; padding: 1px 4px; border-radius: 2px; margin-bottom: 2px; }
+.ps-card-tag.actu { background: rgba(200,88,5,.12); color: #C85805; }
+.ps-card-tag.sport { background: rgba(33,150,243,.12); color: #2196F3; }
+.ps-card-title { font-size: 7px; font-weight: 600; line-height: 1.3; color: #1A1A2E; }
+
+/* Phone right shows voyageur */
+.ps-voy-header {
+  background: #0B1528;
+  padding: 10px;
+}
+.ps-voy-title { font-family: 'Playfair Display', serif; font-size: 11px; font-style: italic; color: #fff; margin-bottom: 4px; }
+.ps-voy-desc { font-size: 6px; color: rgba(255,255,255,.6); line-height: 1.5; }
+.ps-voy-stats { display: flex; gap: 10px; margin-top: 8px; }
+.ps-voy-val { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12px; color: #C85805; font-weight: 700; display: block; }
+.ps-voy-lbl { font-size: 5.5px; color: rgba(255,255,255,.4); }
+.ps-voy-btn { display: block; margin-top: 10px; background: #C85805; color: #fff; font-size: 6.5px; font-weight: 700; padding: 5px 10px; border-radius: 4px; text-align: center; text-decoration: none; }
+
+.ps-voy-cards { background: rgba(255,255,255,.05); padding: 8px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+.ps-voy-card { border-radius: 5px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); display: flex; }
+.ps-voy-card-img { width: 52px; height: 38px; background-size: cover; background-position: center; flex-shrink: 0; }
+.ps-voy-card-body { padding: 5px 7px; }
+.ps-voy-card-icon { font-size: 8px; margin-bottom: 2px; }
+.ps-voy-card-title { font-size: 6.5px; font-weight: 700; color: #fff; }
+
+/* ============ BOTTOM TEXT ============ */
+.bottom-info {
+  margin-top: 52px;
+  text-align: center;
+}
+.bottom-url {
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  letter-spacing: .06em;
+  margin-bottom: 8px;
+}
+.bottom-url span { color: #C85805; font-weight: 600; }
+.bottom-tagline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(255,255,255,.7);
+}
+
+/* Reflection */
+.stage::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  left: 0; right: 0;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.04), transparent);
+  filter: blur(4px);
+  transform: scaleY(-1) translateY(-100%);
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="brand-label">
+  Mboro<span>Actu</span> — Portail d'actualités locales de Mboro, Sénégal 🇸🇳
+</div>
+
+<div class="stage">
+
+  <!-- PHONE LEFT — Accueil -->
+  <div class="phone phone-left">
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="ps-header">
+          <div class="ps-logo">Mboro<span>Actu</span></div>
+          <div class="ps-hamburger">☰</div>
+        </div>
+        <div class="ps-hero" style="background-image:url('https://images.unsplash.com/photo-1513828583688-c52646db42da?w=300&q=80');">
+          <div class="ps-hero-content">
+            <div class="ps-hero-tag">À la une</div>
+            <div class="ps-hero-title">ICS Mboro : nouveau plan d'investissement 2026</div>
+            <div class="ps-hero-dots">
+              <div class="ps-hero-dot active"></div>
+              <div class="ps-hero-dot"></div>
+              <div class="ps-hero-dot"></div>
+              <div class="ps-hero-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="ps-cards">
+          <div class="ps-card">
+            <div class="ps-card-img" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=200&q=70');"></div>
+            <div class="ps-card-body">
+              <div class="ps-card-tag actu">Actualités</div>
+              <div class="ps-card-title">Coupure d'eau jeudi dans les quartiers Nord</div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-img" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=200&q=70');"></div>
+            <div class="ps-card-body">
+              <div class="ps-card-tag sport">Sport</div>
+              <div class="ps-card-title">ASC Jappo qualifié en demi-finale</div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-card-img" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&q=70');"></div>
+            <div class="ps-card-body">
+              <div class="ps-card-tag actu">Culture</div>
+              <div class="ps-card-title">Festival Grande Côte — 3 au 5 oct.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LAPTOP CENTER -->
+  <div class="laptop">
+    <div class="laptop-screen-wrap">
+      <div class="laptop-screen">
+
+        <!-- Header -->
+        <div class="ls-header">
+          <div class="ls-logo">Mboro<span>Actu</span></div>
+          <div class="ls-nav">
+            <a href="#">Accueil</a>
+            <a href="#">Actualités</a>
+            <a href="#">Événements</a>
+            <a href="#">Culture</a>
+            <a href="#">Sport</a>
+            <a href="#">Économie</a>
+          </div>
+        </div>
+
+        <!-- Ticker -->
+        <div class="ls-ticker">
+          <div class="ls-ticker-label">● ACTUS</div>
+          <div class="ls-ticker-text">ICS Mboro : nouveau plan d'investissement 2026 annoncé · Festival de la Grande Côte : du 3 au 5 octobre · ASC Jappo qualifié en demi-finale</div>
+        </div>
+
+        <!-- Hero -->
+        <div class="ls-hero">
+          <div class="ls-hero-content">
+            <div class="ls-hero-tag">Sport</div>
+            <div class="ls-hero-title">ASC Jappo décroche sa qualification en demi-finale de la coupe régionale</div>
+            <div class="ls-hero-meta">Ven. 29 août 2026 · Sport · 3 min de lecture</div>
+          </div>
+          <div class="ls-hero-dots">
+            <div class="ls-hero-dot"></div>
+            <div class="ls-hero-dot"></div>
+            <div class="ls-hero-dot active"></div>
+            <div class="ls-hero-dot"></div>
+          </div>
+        </div>
+
+        <!-- Cards grid -->
+        <div class="ls-cards">
+          <div class="ls-card">
+            <div class="ls-card-img" style="background-image:url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=200&q=70');"></div>
+            <div class="ls-card-body">
+              <div class="ls-card-tag actu">Actualités</div>
+              <div class="ls-card-title">Coupure d'eau jeudi dans les quartiers Nord et Centre</div>
+            </div>
+          </div>
+          <div class="ls-card">
+            <div class="ls-card-img" style="background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&q=70');"></div>
+            <div class="ls-card-body">
+              <div class="ls-card-tag cult">Culture</div>
+              <div class="ls-card-title">Festival de la Grande Côte — 3 au 5 octobre 2026</div>
+            </div>
+          </div>
+          <div class="ls-card">
+            <div class="ls-card-img" style="background-image:url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=200&q=70');"></div>
+            <div class="ls-card-body">
+              <div class="ls-card-tag eco">Économie</div>
+              <div class="ls-card-title">Marché de Mboro : expansion record depuis 2024</div>
+            </div>
+          </div>
+          <div class="ls-card">
+            <div class="ls-card-img" style="background-image:url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=200&q=70');"></div>
+            <div class="ls-card-body">
+              <div class="ls-card-tag actu">Éducation</div>
+              <div class="ls-card-title">Rentrée scolaire 2026 — tout ce qu'il faut savoir</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="laptop-base"></div>
+    <div class="laptop-foot"></div>
+  </div>
+
+  <!-- PHONE RIGHT — Espace Voyageur -->
+  <div class="phone phone-right">
+    <div class="phone-frame">
+      <div class="phone-screen" style="background:#0B1528;display:flex;flex-direction:column;">
+        <div class="ps-header">
+          <div class="ps-logo">Mboro<span>Actu</span></div>
+          <div class="ps-hamburger">☰</div>
+        </div>
+        <div class="ps-voy-header">
+          <div style="font-size:6px;color:#C85805;font-weight:700;letter-spacing:.08em;margin-bottom:4px;">ENTRAIDE LOCALE · MBORO</div>
+          <div class="ps-voy-title">Espace Voyageur</div>
+          <div class="ps-voy-desc">Covoiturage et envoi de colis entre habitants de Mboro et environs.</div>
+          <div class="ps-voy-stats">
+            <div><span class="ps-voy-val">24</span><span class="ps-voy-lbl">Trajets ce mois</span></div>
+            <div><span class="ps-voy-val">380+</span><span class="ps-voy-lbl">Utilisateurs</span></div>
+            <div><span class="ps-voy-val">Gratuit</span><span class="ps-voy-lbl">Toujours</span></div>
+          </div>
+          <div class="ps-voy-btn">Accéder à l'Espace Voyageur →</div>
+        </div>
+        <div class="ps-voy-cards">
+          <div class="ps-voy-card">
+            <div class="ps-voy-card-img" style="background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=200&q=70');"></div>
+            <div class="ps-voy-card-body">
+              <div class="ps-voy-card-icon">🚗</div>
+              <div class="ps-voy-card-title">Covoiturage</div>
+            </div>
+          </div>
+          <div class="ps-voy-card">
+            <div class="ps-voy-card-img" style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&q=70');"></div>
+            <div class="ps-voy-card-body">
+              <div class="ps-voy-card-icon">📦</div>
+              <div class="ps-voy-card-title">Envoi de colis</div>
+            </div>
+          </div>
+          <div class="ps-voy-card">
+            <div class="ps-voy-card-img" style="background-image:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&q=70');"></div>
+            <div class="ps-voy-card-body">
+              <div class="ps-voy-card-icon">💬</div>
+              <div class="ps-voy-card-title">Contact direct</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bottom -->
+<div class="bottom-info">
+  <div class="bottom-url">🌐 <span>mboroactu.com</span></div>
+  <div class="bottom-tagline">L'actualité de Mboro, en un clic.</div>
+</div>
+
+</body>
+</html>

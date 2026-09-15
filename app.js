@@ -101,8 +101,12 @@ document.querySelectorAll('.nl-form').forEach(form => {
       ? new Date(a.date).toLocaleDateString('fr-FR', {weekday:'short',day:'numeric',month:'short',year:'numeric'})
       : '';
 
-    const item = document.createElement('div');
+    const item = document.createElement('a');
     item.className = 'article-item';
+    item.href = 'article.html?id=' + encodeURIComponent(a.id);
+    item.style.textDecoration = 'none';
+    item.style.color = 'inherit';
+    item.style.display = 'flex';
 
     if (a.imageUrl) {
       const thumb = document.createElement('div');
