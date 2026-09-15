@@ -57,6 +57,105 @@ document.querySelectorAll('.nl-form').forEach(form => {
   }
 });
 
+/* ===== DYNAMIC ARTICLES (depuis admin dashboard) ===== */
+(function () {
+  const page = location.pathname.split('/').pop() || 'index.html';
+  if (page !== 'actualites.html') return;
+
+  const STORE_KEY = 'mboroactu_articles';
+  let articles = [];
+  try { articles = JSON.parse(localStorage.getItem(STORE_KEY)) || []; } catch(e) {}
+
+  const published = articles
+    .filter(a => a.status === 'published')
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  if (!published.length) return;
+
+  const catClass = {
+    'Actualités':'actu','Culture':'culture','Sport':'sport',
+    'Économie':'eco','Éducation':'edu','Événements':'event'
+  };
+
+  const container = document.getElementById('articles');
+  if (!container) return;
+
+  function esc(str) {
+    const d = document.createElement('span');
+    d.textContent = String(str || '');
+    return d.innerHTML;
+  }
+
+  const section = document.createElement('div');
+  section.style.cssText = 'margin-bottom:28px;';
+
+  const header = document.createElement('div');
+  header.className = 'section-head';
+  header.style.marginBottom = '16px;';
+  header.innerHTML = '<div><span class="eyebrow">Dernières publications</span><h2 style="font-size:20px;">Récemment ajoutés</h2></div>';
+  section.appendChild(header);
+
+  published.forEach(a => {
+    const cls = catClass[a.category] || 'actu';
+    const dateStr = a.date
+      ? new Date(a.date).toLocaleDateString('fr-FR', {weekday:'short',day:'numeric',month:'short',year:'numeric'})
+      : '';
+
+    const item = document.createElement('div');
+    item.className = 'article-item';
+
+    if (a.imageUrl) {
+      const thumb = document.createElement('div');
+      thumb.className = 'card-img-real';
+      thumb.style.cssText = 'width:110px;height:76px;border-radius:5px;flex-shrink:0;';
+      // Use a safe URL: only allow http/https schemes
+      const safeUrl = /^https?:\/\//.test(a.imageUrl) ? a.imageUrl : '';
+      if (safeUrl) thumb.style.backgroundImage = `url('${safeUrl}')`;
+      item.appendChild(thumb);
+    }
+
+    const info = document.createElement('div');
+    info.className = 'article-info';
+
+    const tag = document.createElement('span');
+    tag.className = 'tag ' + cls;
+    tag.textContent = a.category;
+
+    const h3 = document.createElement('h3');
+    h3.textContent = a.title;
+
+    const p = document.createElement('p');
+    p.textContent = a.excerpt;
+
+    const meta = document.createElement('div');
+    meta.className = 'card-meta';
+    meta.textContent = dateStr;
+    if (a.readTime) {
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      dot.textContent = ' · ';
+      meta.appendChild(dot);
+      meta.appendChild(document.createTextNode(a.readTime));
+    }
+
+    info.appendChild(tag);
+    info.appendChild(h3);
+    info.appendChild(p);
+    info.appendChild(meta);
+    item.appendChild(info);
+    section.appendChild(item);
+  });
+
+  const hr = document.createElement('hr');
+  hr.style.cssText = 'border:none;border-top:1px solid var(--rule);margin:24px 0;';
+  section.appendChild(hr);
+
+  const firstChild = container.querySelector('.layout-wide');
+  if (firstChild) {
+    firstChild.querySelector('div').insertBefore(section, firstChild.querySelector('div').firstChild);
+  }
+})();
+
 /* ===== VOYAGEUR MODULE ===== */
 (function () {
   const board = document.getElementById('board');
