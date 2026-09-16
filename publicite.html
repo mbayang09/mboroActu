@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publicité & Partenariats — MboroActu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== HERO PUBLICITE ===== */
+.pub-hero {
+  background: var(--void);
+  padding: 80px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+.pub-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(200,88,5,.18) 0%, transparent 65%);
+}
+.pub-hero-inner { position: relative; z-index: 1; }
+.pub-eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--amber);
+  margin-bottom: 16px; display: block;
+}
+.pub-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700; line-height: 1.12;
+  color: #fff; max-width: 600px; margin-bottom: 20px;
+}
+.pub-hero-sub {
+  font-size: 16px; line-height: 1.75;
+  color: rgba(255,255,255,.65);
+  max-width: 520px; margin-bottom: 36px;
+}
+.pub-hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.pub-stat-val {
+  font-size: 32px; font-weight: 700; color: #fff;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  line-height: 1;
+}
+.pub-stat-lbl {
+  font-size: 12px; color: rgba(255,255,255,.45);
+  margin-top: 5px;
+}
+
+/* ===== AUDIENCE ===== */
+.audience-section { padding: 72px 0; background: var(--bone); }
+.audience-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; margin-top: 40px;
+}
+.audience-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 14px; padding: 28px 24px;
+  position: relative; overflow: hidden;
+}
+.audience-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: linear-gradient(90deg, var(--amber), #f07a30);
+}
+.audience-icon { font-size: 32px; margin-bottom: 16px; }
+.audience-num {
+  font-size: 36px; font-weight: 700;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  color: var(--ink); line-height: 1; margin-bottom: 6px;
+}
+.audience-label { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+.audience-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ===== FORMATS PUB ===== */
+.formats-section { padding: 72px 0; background: var(--paper); }
+.formats-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 24px; margin-top: 40px;
+}
+.format-card {
+  border: 1.5px solid var(--rule); border-radius: 14px;
+  overflow: hidden; transition: border-color .2s, box-shadow .2s;
+}
+.format-card:hover {
+  border-color: var(--amber);
+  box-shadow: 0 8px 24px rgba(200,88,5,.1);
+}
+.format-card.featured { border-color: var(--amber); }
+.format-header {
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.format-badge {
+  background: var(--amber); color: #fff;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px;
+  letter-spacing: .06em; text-transform: uppercase;
+  flex-shrink: 0; margin-top: 4px;
+}
+.format-badge.new { background: #16a34a; }
+.format-title {
+  font-size: 17px; font-weight: 700; color: var(--ink);
+  margin-bottom: 5px;
+}
+.format-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.format-body { padding: 20px 28px 24px; }
+.format-price {
+  font-size: 28px; font-weight: 700;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  color: var(--amber); margin-bottom: 3px;
+}
+.format-price-unit { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+.format-features { list-style: none; }
+.format-features li {
+  font-size: 13px; color: var(--ink);
+  padding: 5px 0; border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 8px;
+}
+.format-features li:last-child { border-bottom: none; }
+.format-features li::before {
+  content: '✓'; color: var(--amber);
+  font-weight: 700; flex-shrink: 0;
+}
+
+/* Mockup visuel des formats */
+.format-preview {
+  background: var(--bg);
+  border-radius: 8px; padding: 16px;
+  margin-top: 16px;
+  border: 1px dashed var(--rule);
+  text-align: center;
+  font-size: 12px; color: var(--muted);
+}
+.format-preview-bar {
+  background: linear-gradient(90deg, var(--amber), #f07a30);
+  height: 8px; border-radius: 4px; margin-bottom: 8px;
+}
+.format-preview-block {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 6px; padding: 10px;
+  font-size: 11px; color: var(--ink); font-weight: 600;
+}
+
+/* ===== CONTACT ===== */
+.contact-section {
+  background: var(--void); padding: 72px 0;
+  position: relative; overflow: hidden;
+}
+.contact-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(200,88,5,.15) 0%, transparent 60%);
+}
+.contact-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: center;
+}
+.contact-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px; font-weight: 700; font-style: italic;
+  color: #fff; margin-bottom: 16px; line-height: 1.2;
+}
+.contact-text p {
+  font-size: 15px; color: rgba(255,255,255,.6);
+  line-height: 1.75; margin-bottom: 24px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 14px; }
+.contact-item {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 14px; color: rgba(255,255,255,.75);
+}
+.contact-item-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(200,88,5,.2); display: flex;
+  align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+
+.contact-form {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px; padding: 32px;
+}
+.contact-form h3 {
+  font-size: 18px; font-weight: 700; color: #fff;
+  margin-bottom: 20px;
+}
+.cf-group { margin-bottom: 16px; }
+.cf-label {
+  display: block; font-size: 12px; font-weight: 600;
+  color: rgba(255,255,255,.6); margin-bottom: 6px;
+}
+.cf-input, .cf-select, .cf-textarea {
+  width: 100%; padding: 10px 14px;
+  background: rgba(255,255,255,.08);
+  border: 1.5px solid rgba(255,255,255,.12);
+  border-radius: 8px; color: #fff;
+  font-size: 13px; font-family: 'Inter', sans-serif;
+  outline: none; transition: border-color .2s;
+}
+.cf-input:focus, .cf-select:focus, .cf-textarea:focus {
+  border-color: var(--amber);
+}
+.cf-input::placeholder, .cf-textarea::placeholder { color: rgba(255,255,255,.3); }
+.cf-select { cursor: pointer; }
+.cf-select option { background: var(--void); color: #fff; }
+.cf-textarea { min-height: 90px; resize: vertical; }
+.cf-submit {
+  width: 100%; padding: 12px;
+  background: var(--amber); color: #fff;
+  border: none; border-radius: 8px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: opacity .2s;
+  box-shadow: 0 4px 14px rgba(200,88,5,.35);
+}
+.cf-submit:hover { opacity: .9; }
+
+/* ===== PARTENAIRES ===== */
+.partners-section { padding: 56px 0; background: var(--bone); }
+.section-head-center { text-align: center; margin-bottom: 36px; }
+.section-head-center h2 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--ink); margin-top: 6px; }
+.partner-logos {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  justify-content: center; align-items: center;
+}
+.partner-slot {
+  background: var(--paper);
+  border: 1.5px dashed var(--rule);
+  border-radius: 10px; padding: 16px 28px;
+  font-size: 12px; color: var(--muted);
+  text-align: center; min-width: 140px;
+  transition: border-color .2s;
+}
+.partner-slot:hover { border-color: var(--amber); }
+.partner-slot-name { font-weight: 700; color: var(--ink); font-size: 13px; margin-bottom: 2px; }
+
+@media(max-width: 860px) {
+  .audience-grid { grid-template-columns: 1fr 1fr; }
+  .formats-grid { grid-template-columns: 1fr; }
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pub-hero-stats { gap: 24px; }
+}
+@media(max-width: 600px) {
+  .audience-grid { grid-template-columns: 1fr; }
+  .pub-hero { padding: 52px 0 44px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="topbar">
+    <a href="index.html" class="logo">Mboro<span>Actu</span></a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="actualites.html">Actualités</a>
+      <a href="evenements.html">Événements</a>
+      <a href="culture.html">Culture</a>
+      <a href="sport.html">Sport</a>
+      <a href="economie.html">Économie</a>
+      <a href="education.html">Éducation</a>
+      <a href="voyageur.html" class="highlight">Voyageur</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">Accueil</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="evenements.html">Événements</a>
+    <a href="culture.html">Culture</a>
+    <a href="sport.html">Sport</a>
+    <a href="economie.html">Économie</a>
+    <a href="education.html">Éducation</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="voyageur.html" class="highlight">Espace Voyageur</a>
+  </nav>
+  <div class="header-ticker">
+    <span class="ht-label">Actus</span>
+    <div class="ht-wrap"><div class="ht-track">
+      <a href="article.html?slug=ics-126-milliards" class="ht-item">ICS Mboro : Indorama engage 126 milliards FCFA pour moderniser le site phosphatier</a>
+      <span class="ht-sep"> · </span>
+      <a href="article.html?slug=festival-grande-cote" class="ht-item">Festival de la Grande Côte : du 3 au 5 octobre</a>
+      <span class="ht-sep"> · </span>
+      <a href="article.html?slug=asc-jappo-demi-finale" class="ht-item">ASC Jappo : qualification en demi-finale</a>
+      <span class="ht-sep"> · </span>
+      <a href="article.html?slug=bissap-niayes" class="ht-item">Dans les Niayes : le bissap s'impose face au déclin du maraîchage</a>
+      <span class="ht-sep"> · </span>
+      <a href="article.html?slug=ics-126-milliards" class="ht-item">ICS Mboro : Indorama engage 126 milliards FCFA pour moderniser le site phosphatier</a>
+      <span class="ht-sep"> · </span>
+      <a href="article.html?slug=festival-grande-cote" class="ht-item">Festival de la Grande Côte : du 3 au 5 octobre</a>
+      <span class="ht-sep"> · </span>
+      <a href="article.html?slug=asc-jappo-demi-finale" class="ht-item">ASC Jappo : qualification en demi-finale</a>
+      <span class="ht-sep"> · </span>
+      <a href="article.html?slug=bissap-niayes" class="ht-item">Dans les Niayes : le bissap s'impose face au déclin du maraîchage</a>
+    </div></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="pub-hero">
+  <div class="wrap pub-hero-inner">
+    <span class="pub-eyebrow">Publicité & Partenariats</span>
+    <h1 class="pub-hero-title">Touchez directement les habitants et la diaspora de Mboro</h1>
+    <p class="pub-hero-sub">MboroActu est le premier portail d'actualités de la commune de Mboro. Annoncez votre commerce, votre service ou votre événement auprès d'une communauté locale engagée — sur la Grande Côte et partout où la diaspora sénégalaise se connecte.</p>
+    <div class="pub-hero-stats">
+      <div>
+        <div class="pub-stat-val">40 000+</div>
+        <div class="pub-stat-lbl">Habitants de Mboro</div>
+      </div>
+      <div>
+        <div class="pub-stat-val">6</div>
+        <div class="pub-stat-lbl">Rubriques éditoriales</div>
+      </div>
+      <div>
+        <div class="pub-stat-val">Gratuit</div>
+        <div class="pub-stat-lbl">Accès lecteurs</div>
+      </div>
+      <div>
+        <div class="pub-stat-val">117 km</div>
+        <div class="pub-stat-lbl">Au nord de Dakar</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIENCE -->
+<section class="audience-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Notre audience</span>
+        <h2>Qui lit MboroActu ?</h2>
+      </div>
+    </div>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-icon">🏠</div>
+        <div class="audience-num">40 811</div>
+        <div class="audience-label">Habitants de la commune</div>
+        <div class="audience-desc">Commerçants, fonctionnaires, travailleurs ICS, agriculteurs, pêcheurs, jeunes et familles de Mboro et ses environs.</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">✈️</div>
+        <div class="audience-num">Diaspora</div>
+        <div class="audience-label">Sénégalais de l'étranger</div>
+        <div class="audience-desc">Des Mborossois établis en Europe, aux États-Unis et en Afrique suivent l'actualité de leur commune d'origine via MboroActu.</div>
+      </div>
+      <div class="audience-card">
+        <div class="audience-icon">📱</div>
+        <div class="audience-num">Mobile</div>
+        <div class="audience-label">Première plateforme locale</div>
+        <div class="audience-desc">MboroActu est optimisé mobile, avec une navigation fluide sur tous les appareils — là où les habitants s'informent au quotidien.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATS -->
+<section class="formats-section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Nos offres</span>
+        <h2>Formats publicitaires disponibles</h2>
+      </div>
+      <a href="#contact" class="see-all">Nous contacter →</a>
+    </div>
+    <div class="formats-grid">
+
+      <div class="format-card featured">
+        <div class="format-header">
+          <div>
+            <div class="format-title">Annonceur du Mois</div>
+            <div class="format-desc">Votre commerce mis en avant dans la sidebar de toutes les pages, avec photo, description et lien direct.</div>
+          </div>
+          <span class="format-badge">⭐ Premium</span>
+        </div>
+        <div class="format-body">
+          <div class="format-price">25 000 FCFA</div>
+          <div class="format-price-unit">par mois</div>
+          <ul class="format-features">
+            <li>Logo + photo de votre commerce</li>
+            <li>Nom, description et adresse</li>
+            <li>Lien WhatsApp ou téléphone direct</li>
+            <li>Visible sur toutes les pages du site</li>
+            <li>Durée : 1 mois renouvelable</li>
+          </ul>
+          <div class="format-preview">
+            <div style="background:var(--void);border-radius:6px;padding:12px;text-align:left;">
+              <div style="font-size:9px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;">Annonceur du mois</div>
+              <div style="display:flex;gap:8px;align-items:center;">
+                <div style="width:36px;height:36px;border-radius:6px;background:var(--amber);flex-shrink:0;"></div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#fff;">Votre Commerce</div>
+                  <div style="font-size:9px;color:rgba(255,255,255,.5);">Votre description ici</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="format-card">
+        <div class="format-header">
+          <div>
+            <div class="format-title">Bannière Sidebar</div>
+            <div class="format-desc">Image publicitaire dans la colonne latérale des pages Actualités, Économie, Culture et Sport.</div>
+          </div>
+          <span class="format-badge" style="background:var(--void);">Classique</span>
+        </div>
+        <div class="format-body">
+          <div class="format-price">15 000 FCFA</div>
+          <div class="format-price-unit">par mois</div>
+          <ul class="format-features">
+            <li>Format image 300×250 px</li>
+            <li>Lien cliquable vers votre site ou WhatsApp</li>
+            <li>Visible sur les pages de rubriques</li>
+            <li>Rotation possible entre 2 annonces</li>
+            <li>Durée : 1 mois renouvelable</li>
+          </ul>
+          <div class="format-preview">
+            <div style="background:var(--bg);border-radius:6px;padding:10px;text-align:center;border:1px dashed var(--rule);">
+              <div style="font-size:9px;color:var(--muted);margin-bottom:4px;">PUBLICITÉ</div>
+              <div style="background:linear-gradient(135deg,var(--amber),#f07a30);height:48px;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                <span style="font-size:9px;color:#fff;font-weight:700;">Votre bannière ici</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="format-card">
+        <div class="format-header">
+          <div>
+            <div class="format-title">Article Sponsorisé</div>
+            <div class="format-desc">Un article rédigé par MboroActu présentant votre activité, intégré dans le fil éditorial avec la mention "Partenaire".</div>
+          </div>
+          <span class="format-badge new">Nouveau</span>
+        </div>
+        <div class="format-body">
+          <div class="format-price">40 000 FCFA</div>
+          <div class="format-price-unit">par publication</div>
+          <ul class="format-features">
+            <li>Rédaction par l'équipe MboroActu</li>
+            <li>Photo et mise en page professionnelle</li>
+            <li>Diffusion sur la page Actualités</li>
+            <li>Partagé sur les réseaux sociaux</li>
+            <li>Archivé et consultable en permanence</li>
+          </ul>
+          <div class="format-preview">
+            <div style="background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px;text-align:left;">
+              <div style="display:flex;gap:6px;margin-bottom:6px;">
+                <span style="font-size:8px;background:rgba(200,88,5,.1);color:var(--amber);padding:1px 5px;border-radius:3px;font-weight:700;">Partenaire</span>
+              </div>
+              <div style="font-size:10px;font-weight:700;color:var(--ink);line-height:1.3;">Titre de votre article sponsorisé</div>
+              <div style="font-size:8px;color:var(--muted);margin-top:3px;">Votre activité, vos services, votre histoire...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="format-card">
+        <div class="format-header">
+          <div>
+            <div class="format-title">Bannière Pleine Largeur</div>
+            <div class="format-desc">Bandeau publicitaire entre les sections de la page d'accueil — visible par tous les visiteurs dès l'arrivée sur le site.</div>
+          </div>
+          <span class="format-badge" style="background:var(--void);">Classique</span>
+        </div>
+        <div class="format-body">
+          <div class="format-price">30 000 FCFA</div>
+          <div class="format-price-unit">par mois</div>
+          <ul class="format-features">
+            <li>Format pleine largeur (728×90 px)</li>
+            <li>Page d'accueil et pages rubriques</li>
+            <li>Haute visibilité — premier écran</li>
+            <li>Lien cliquable vers votre destination</li>
+            <li>Durée : 1 mois renouvelable</li>
+          </ul>
+          <div class="format-preview">
+            <div style="background:var(--void);border-radius:6px;padding:6px 12px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:9px;color:#fff;font-weight:700;">Votre publicité pleine largeur</span>
+              <span style="font-size:9px;background:var(--amber);color:#fff;padding:2px 6px;border-radius:3px;">En savoir +</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end formats-grid -->
+  </div>
+</section>
+
+<!-- PARTENAIRES ACTUELS -->
+<section class="partners-section">
+  <div class="wrap">
+    <div class="section-head-center">
+      <span class="eyebrow" style="color:var(--amber);">Ils nous font confiance</span>
+      <h2>Nos partenaires</h2>
+    </div>
+    <div class="partner-logos">
+      <div class="partner-slot">
+        <div class="partner-slot-name">Pharmacie El Hadji Ndiaye</div>
+        <div style="font-size:11px;color:var(--muted);">Santé · Mboro Centre</div>
+      </div>
+      <div class="partner-slot">
+        <div class="partner-slot-name">Quincaillerie Ndiaye</div>
+        <div style="font-size:11px;color:var(--muted);">Commerce · Mboro</div>
+      </div>
+      <div class="partner-slot">
+        <div class="partner-slot-name">Chez Mariama</div>
+        <div style="font-size:11px;color:var(--muted);">Restauration · Mboro</div>
+      </div>
+      <div class="partner-slot" style="border-style:dashed;opacity:.6;">
+        <div style="font-size:20px;margin-bottom:4px;">+</div>
+        <div style="font-size:11px;color:var(--muted);">Votre commerce ici</div>
+      </div>
+      <div class="partner-slot" style="border-style:dashed;opacity:.6;">
+        <div style="font-size:20px;margin-bottom:4px;">+</div>
+        <div style="font-size:11px;color:var(--muted);">Votre commerce ici</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-text">
+        <h2>Prêt à toucher la communauté de Mboro ?</h2>
+        <p>Remplissez le formulaire et notre équipe vous recontacte sous 24h pour construire ensemble votre campagne publicitaire.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-item-icon">📱</div>
+            <span>WhatsApp : <strong>+221 77 000 00 00</strong></span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <span>Email : <strong>pub@mboroactu.com</strong></span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <span>Mboro, département de Tivaouane, Sénégal</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Demande de publicité</h3>
+        <div class="cf-group">
+          <label class="cf-label">Votre nom *</label>
+          <input type="text" class="cf-input" placeholder="Ex: Ousmane Diop">
+        </div>
+        <div class="cf-group">
+          <label class="cf-label">Téléphone / WhatsApp *</label>
+          <input type="tel" class="cf-input" placeholder="+221 77 000 00 00">
+        </div>
+        <div class="cf-group">
+          <label class="cf-label">Nom de votre commerce / activité *</label>
+          <input type="text" class="cf-input" placeholder="Ex: Boutique Aminata">
+        </div>
+        <div class="cf-group">
+          <label class="cf-label">Format souhaité</label>
+          <select class="cf-select">
+            <option value="">— Choisir un format —</option>
+            <option>Annonceur du Mois — 25 000 FCFA/mois</option>
+            <option>Bannière Sidebar — 15 000 FCFA/mois</option>
+            <option>Article Sponsorisé — 40 000 FCFA</option>
+            <option>Bannière Pleine Largeur — 30 000 FCFA/mois</option>
+            <option>Plusieurs formats — à discuter</option>
+          </select>
+        </div>
+        <div class="cf-group">
+          <label class="cf-label">Message (optionnel)</label>
+          <textarea class="cf-textarea" placeholder="Décrivez votre activité ou vos besoins spécifiques..."></textarea>
+        </div>
+        <button class="cf-submit" onclick="submitForm()">Envoyer ma demande →</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Mboro<span>Actu</span></span>
+      <p>Le portail d'actualités locales de Mboro, Sénégal. Restez connecté à votre commune.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="evenements.html">Événements</a></li>
+          <li><a href="voyageur.html">Espace Voyageur</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>À propos</h4>
+        <ul>
+          <li><a href="publicite.html">Publicité</a></li>
+          <li><a href="index.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="nl-form">
+        <h4>Newsletter</h4>
+        <p>Les actus de Mboro chaque semaine.</p>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <input type="email" placeholder="votre@email.com" style="flex:1;padding:8px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;font-size:13px;font-family:Inter,sans-serif;outline:none;">
+          <button style="background:var(--amber);color:#fff;border:none;border-radius:6px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;font-family:Inter,sans-serif;">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="wrap footer-bottom-inner">
+      <span>© 2026 MboroActu — Mboro, Sénégal</span>
+      <span><a href="publicite.html" style="color:rgba(255,255,255,.5);text-decoration:none;">Publicité</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+<script>
+function submitForm() {
+  const toast = document.getElementById('toast');
+  toast.textContent = '✅ Demande envoyée ! Nous vous recontactons sous 24h.';
+  toast.className = 'toast show success';
+  setTimeout(() => toast.className = 'toast', 4000);
+}
+</script>
+</body>
+</html>

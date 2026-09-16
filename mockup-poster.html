@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MboroActu — Poster Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Dancing+Script:wght@600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #e8e2da;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Download button — outside poster */
+.dl-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #2c2218; color: #fff;
+  padding: 14px 32px; border-radius: 50px;
+  font-size: 14px; font-weight: 600;
+  border: none; cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  margin-bottom: 32px;
+  transition: opacity .2s;
+  letter-spacing: .02em;
+}
+.dl-btn:hover { opacity: .85; }
+.dl-btn svg { width: 16px; height: 16px; }
+
+/* ============================
+   POSTER
+============================ */
+#poster {
+  width: 1080px;
+  height: 1080px;
+  background: #F2EBE0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Scale down for screen display */
+  transform-origin: top center;
+}
+
+/* Soft blob shadow behind devices */
+.blob {
+  position: absolute;
+  bottom: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 780px;
+  height: 320px;
+  background: radial-gradient(ellipse at center, rgba(180,155,120,.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ---- Header text ---- */
+.poster-header {
+  margin-top: 72px;
+  text-align: center;
+  z-index: 2;
+}
+.poster-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 72px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  color: #2c2218;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.poster-script {
+  font-family: 'Dancing Script', cursive;
+  font-size: 54px;
+  font-weight: 600;
+  color: #7a6048;
+  margin-top: -6px;
+  letter-spacing: .02em;
+}
+
+/* ---- Devices area ---- */
+.devices-wrap {
+  position: relative;
+  margin-top: 44px;
+  width: 780px;
+  height: 380px;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+/* LAPTOP */
+.laptop {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 560px;
+}
+.laptop-screen-wrap {
+  background: #1a1a1a;
+  border-radius: 14px 14px 0 0;
+  padding: 12px 12px 0;
+  position: relative;
+}
+.laptop-cam {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #444; margin: 0 auto 8px;
+}
+.laptop-screen {
+  width: 100%;
+  height: 282px;
+  background: #0B1528;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+.laptop-base {
+  background: #2a2a2a;
+  height: 18px;
+  border-radius: 0 0 4px 4px;
+  position: relative;
+}
+.laptop-base::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 140px; height: 8px;
+  background: #1a1a1a;
+  border-radius: 0 0 8px 8px;
+}
+.laptop-foot {
+  height: 10px;
+  background: linear-gradient(to bottom, #333, #222);
+  border-radius: 0 0 8px 8px;
+  width: calc(100% + 40px);
+  margin-left: -20px;
+}
+
+/* PHONE */
+.phone {
+  position: absolute;
+  right: 0;
+  bottom: 16px;
+  width: 168px;
+  z-index: 3;
+}
+.phone-frame {
+  background: #111;
+  border-radius: 28px;
+  padding: 10px 6px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.phone-notch {
+  width: 50px; height: 8px;
+  background: #000; border-radius: 10px;
+  margin: 0 auto 6px;
+}
+.phone-screen {
+  width: 100%;
+  height: 270px;
+  background: #0B1528;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+.phone-home {
+  width: 40px; height: 4px;
+  background: #333; border-radius: 10px;
+  margin: 6px auto 0;
+}
+
+/* ---- Screen content (mini site rendering) ---- */
+.screen-content {
+  width: 100%; height: 100%;
+  position: absolute; top: 0; left: 0;
+}
+
+/* Mini header */
+.mc-header {
+  background: #0B1528;
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  height: 24px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.mc-logo {
+  font-size: 8px; font-weight: 700; font-style: italic;
+  color: #fff; font-family: 'Cormorant Garamond', serif;
+  letter-spacing: .02em;
+}
+.mc-logo span { color: #C85805; }
+.mc-nav {
+  display: flex; gap: 5px;
+}
+.mc-nav-item {
+  font-size: 4px; color: rgba(255,255,255,.6);
+  font-family: 'Inter', sans-serif;
+}
+.mc-nav-item.hl {
+  background: #C85805; color: #fff;
+  padding: 1px 4px; border-radius: 3px;
+}
+
+/* Ticker strip */
+.mc-ticker {
+  background: #fff;
+  padding: 2px 8px;
+  font-size: 4px; color: #444;
+  display: flex; align-items: center; gap: 4px;
+  white-space: nowrap; overflow: hidden;
+  border-bottom: 1px solid #eee;
+}
+.mc-ticker-label {
+  background: #C85805; color: #fff;
+  padding: 1px 4px; border-radius: 2px;
+  font-size: 3.5px; font-weight: 700; flex-shrink: 0;
+}
+
+/* Hero slide */
+.mc-hero {
+  position: relative;
+  height: 140px;
+  background: linear-gradient(to bottom right, #0d1f3c 0%, #162d5a 100%);
+  overflow: hidden;
+}
+.mc-hero-img {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=60');
+  background-size: cover; background-position: center;
+  opacity: .45;
+}
+.mc-hero-body {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 8px 10px 10px;
+}
+.mc-hero-tag {
+  display: inline-block;
+  background: #C85805; color: #fff;
+  font-size: 3.5px; font-weight: 700;
+  padding: 1px 4px; border-radius: 2px;
+  margin-bottom: 3px; font-family: 'Inter', sans-serif;
+}
+.mc-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9px; font-weight: 700;
+  color: #fff; line-height: 1.25;
+  max-width: 120px;
+}
+.mc-hero-sub {
+  font-size: 3.5px; color: rgba(255,255,255,.65);
+  margin-top: 3px; font-family: 'Inter', sans-serif;
+  line-height: 1.4; max-width: 150px;
+}
+.mc-hero-btns {
+  display: flex; gap: 4px; margin-top: 6px;
+}
+.mc-btn {
+  font-size: 4px; padding: 2px 6px; border-radius: 3px;
+  font-family: 'Inter', sans-serif; font-weight: 600;
+}
+.mc-btn-p { background: #C85805; color: #fff; }
+.mc-btn-o { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.4); }
+
+/* Hero bottom bar */
+.mc-bottombar {
+  background: rgba(0,0,0,.4);
+  display: flex; gap: 0;
+}
+.mc-bb-item {
+  flex: 1; padding: 3px 6px;
+  border-right: 1px solid rgba(255,255,255,.08);
+  font-size: 3px; color: rgba(255,255,255,.5);
+  font-family: 'Inter', sans-serif;
+}
+.mc-bb-val {
+  font-size: 4px; color: #fff; font-weight: 600;
+  display: block; margin-top: 1px;
+}
+
+/* Mini cards below hero */
+.mc-cards {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4px; padding: 6px;
+  background: #F6F3EC;
+}
+.mc-card {
+  background: #fff; border-radius: 3px; overflow: hidden;
+}
+.mc-card-img {
+  height: 24px; background-size: cover; background-position: center;
+}
+.mc-card-body { padding: 3px 4px; }
+.mc-card-tag {
+  font-size: 3px; font-weight: 700;
+  padding: 0 2px; border-radius: 1px;
+  display: inline-block; margin-bottom: 1px;
+}
+.mc-card-title {
+  font-size: 3.5px; font-weight: 600; color: #1A1A2E;
+  line-height: 1.3; font-family: 'Inter', sans-serif;
+}
+
+/* ---- Phone version (narrower) ---- */
+.phone-screen .mc-header { padding: 0 6px; height: 18px; }
+.phone-screen .mc-hero { height: 110px; }
+.phone-screen .mc-hero-title { font-size: 7px; max-width: 90px; }
+.phone-screen .mc-hero-sub { display: none; }
+.phone-screen .mc-cards { grid-template-columns: 1fr; }
+.phone-screen .mc-card-img { height: 20px; }
+
+/* ---- Footer URL ---- */
+.poster-url {
+  margin-top: auto;
+  margin-bottom: 52px;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .22em;
+  color: #7a6048;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+/* Decorative thin lines */
+.deco-line {
+  position: absolute;
+  left: 50%; transform: translateX(-50%);
+  width: 1px; background: rgba(122,96,72,.15);
+}
+.deco-line-1 { top: 0; height: 60px; }
+.deco-line-2 { bottom: 0; height: 60px; }
+.deco-h {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  height: 1px; background: rgba(122,96,72,.12);
+}
+.deco-h-l { left: 60px; width: 80px; }
+.deco-h-r { right: 60px; width: 80px; }
+
+/* Corner marks */
+.corner {
+  position: absolute;
+  width: 20px; height: 20px;
+  opacity: .25;
+}
+.corner::before, .corner::after {
+  content: ''; position: absolute;
+  background: #7a6048;
+}
+.corner::before { width: 1px; height: 100%; left: 0; top: 0; }
+.corner::after  { height: 1px; width: 100%; left: 0; top: 0; }
+.c-tl { top: 32px; left: 32px; }
+.c-tr { top: 32px; right: 32px; transform: scaleX(-1); }
+.c-bl { bottom: 32px; left: 32px; transform: scaleY(-1); }
+.c-br { bottom: 32px; right: 32px; transform: scale(-1); }
+</style>
+</head>
+<body>
+
+<button class="dl-btn" onclick="downloadPoster()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+  Télécharger en PNG (1080×1080)
+</button>
+
+<!-- ======================== POSTER ======================== -->
+<div id="poster">
+
+  <!-- Decorative corners -->
+  <div class="corner c-tl"></div>
+  <div class="corner c-tr"></div>
+  <div class="corner c-bl"></div>
+  <div class="corner c-br"></div>
+  <div class="deco-line deco-line-1"></div>
+  <div class="deco-line deco-line-2"></div>
+  <div class="deco-h deco-h-l"></div>
+  <div class="deco-h deco-h-r"></div>
+
+  <!-- Header -->
+  <div class="poster-header">
+    <div class="poster-brand">MboroActu</div>
+    <div class="poster-script">Aesthetics</div>
+  </div>
+
+  <!-- Devices -->
+  <div class="devices-wrap">
+    <div class="blob"></div>
+
+    <!-- LAPTOP -->
+    <div class="laptop">
+      <div class="laptop-screen-wrap">
+        <div class="laptop-cam"></div>
+        <div class="laptop-screen">
+          <div class="screen-content" id="laptopScreen">
+            <!-- Mini header -->
+            <div class="mc-header">
+              <div class="mc-logo">Mboro<span>Actu</span></div>
+              <div class="mc-nav">
+                <span class="mc-nav-item">Accueil</span>
+                <span class="mc-nav-item">Actualités</span>
+                <span class="mc-nav-item">Événements</span>
+                <span class="mc-nav-item">Culture</span>
+                <span class="mc-nav-item">Sport</span>
+                <span class="mc-nav-item">Économie</span>
+                <span class="mc-nav-item">Éducation</span>
+                <span class="mc-nav-item hl">Voyageur</span>
+              </div>
+            </div>
+            <!-- Ticker -->
+            <div class="mc-ticker">
+              <span class="mc-ticker-label">ACTUS</span>
+              ICS Mboro : nouveau plan d'investissement 2026 annoncé · Festival de la Grande Côte · ASC Jappo qualifié en demi-finale de la coupe régionale · Sénégalaise des Eaux : coupure prévue jeudi
+            </div>
+            <!-- Hero -->
+            <div class="mc-hero">
+              <div class="mc-hero-img"></div>
+              <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to right, rgba(11,21,40,.88) 55%, transparent 100%);"></div>
+              <div class="mc-hero-body">
+                <div class="mc-hero-tag">Actualités</div>
+                <div class="mc-hero-title">Mboro-sur-Mer : le réaménagement du front de mer annoncé pour 2027</div>
+                <div class="mc-hero-sub">La mairie de Mboro présente son projet de réaménagement du littoral : promenade piétonne, aire de jeux, espace commercial et végétalisation du front de mer.</div>
+                <div class="mc-hero-btns">
+                  <span class="mc-btn mc-btn-p">Lire l'article</span>
+                  <span class="mc-btn mc-btn-o">Voir les projets</span>
+                </div>
+              </div>
+              <!-- Side mini cards -->
+              <div style="position:absolute;top:6px;right:6px;width:90px;display:flex;flex-direction:column;gap:3px;">
+                <div style="background:rgba(11,21,40,.75);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:4px;display:flex;gap:3px;align-items:center;">
+                  <div style="width:28px;height:20px;border-radius:2px;background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=100&q=60');background-size:cover;flex-shrink:0;"></div>
+                  <div>
+                    <div style="font-size:3px;color:rgba(255,255,255,.5);font-family:Inter,sans-serif;">Festival de la Grande Côte — il y a 2j</div>
+                    <div style="font-size:4px;color:#fff;font-weight:600;font-family:Inter,sans-serif;line-height:1.2;">Festival de la Côte revient en oct.</div>
+                  </div>
+                </div>
+                <div style="background:rgba(11,21,40,.75);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:4px;display:flex;gap:3px;align-items:center;">
+                  <div style="width:28px;height:20px;border-radius:2px;background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=100&q=60');background-size:cover;flex-shrink:0;"></div>
+                  <div>
+                    <div style="font-size:3px;color:rgba(255,255,255,.5);font-family:Inter,sans-serif;">Sport · il y a 3j</div>
+                    <div style="font-size:4px;color:#fff;font-weight:600;font-family:Inter,sans-serif;line-height:1.2;">ASC Jappo qualifié en demi-finale</div>
+                  </div>
+                </div>
+                <div style="background:rgba(11,21,40,.75);border:1px solid rgba(255,255,255,.1);border-radius:3px;padding:4px;display:flex;gap:3px;align-items:center;">
+                  <div style="width:28px;height:20px;border-radius:2px;background-image:url('https://images.unsplash.com/photo-1510016830-f755e0b28aa8?w=100&q=60');background-size:cover;flex-shrink:0;"></div>
+                  <div>
+                    <div style="font-size:3px;color:rgba(255,255,255,.5);font-family:Inter,sans-serif;">Économie · il y a 4j</div>
+                    <div style="font-size:4px;color:#fff;font-weight:600;font-family:Inter,sans-serif;line-height:1.2;">Pêcheurs : extension du quai</div>
+                  </div>
+                </div>
+              </div>
+              <!-- Dots -->
+              <div style="position:absolute;bottom:5px;left:10px;display:flex;gap:3px;">
+                <div style="width:12px;height:3px;background:#C85805;border-radius:2px;"></div>
+                <div style="width:4px;height:3px;background:rgba(255,255,255,.3);border-radius:2px;"></div>
+                <div style="width:4px;height:3px;background:rgba(255,255,255,.3);border-radius:2px;"></div>
+                <div style="width:4px;height:3px;background:rgba(255,255,255,.3);border-radius:2px;"></div>
+              </div>
+            </div>
+            <!-- Bottom bar -->
+            <div class="mc-bottombar">
+              <div class="mc-bb-item">☀️ Météo<span class="mc-bb-val">29°C · Ensoleillé</span></div>
+              <div class="mc-bb-item">📅 Prochain<span class="mc-bb-val">Tournoi plage — 12 sept.</span></div>
+              <div class="mc-bb-item">🚐 Voyageur<span class="mc-bb-val" style="color:#C85805;">5 trajets →</span></div>
+            </div>
+            <!-- "À la une" label -->
+            <div style="padding:6px 10px 2px;background:#F6F3EC;">
+              <div style="font-size:3.5px;color:#C85805;font-weight:700;letter-spacing:.1em;font-family:Inter,sans-serif;text-transform:uppercase;">Dossier du jour</div>
+              <div style="font-size:7px;font-weight:700;color:#0B1528;font-family:'Cormorant Garamond',serif;">À la une</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="laptop-base"></div>
+      <div class="laptop-foot"></div>
+    </div>
+
+    <!-- PHONE -->
+    <div class="phone">
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="screen-content">
+            <!-- Mini header phone -->
+            <div class="mc-header" style="height:16px;padding:0 5px;">
+              <div class="mc-logo" style="font-size:7px;">Mboro<span>Actu</span></div>
+            </div>
+            <!-- ticker phone -->
+            <div class="mc-ticker" style="font-size:3px;">
+              <span class="mc-ticker-label">ACTUS</span>
+              ASC Jappo qualifié · Festival Grande Côte
+            </div>
+            <!-- hero phone -->
+            <div class="mc-hero" style="height:118px;">
+              <div class="mc-hero-img" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=300&q=60');"></div>
+              <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to top, rgba(11,21,40,.9) 0%, rgba(11,21,40,.3) 100%);"></div>
+              <div class="mc-hero-body" style="padding:5px 7px 7px;">
+                <div class="mc-hero-tag" style="font-size:3px;">Sport</div>
+                <div class="mc-hero-title" style="font-size:8px;max-width:100%;">ASC Jappo décroche sa qualification en demi-finale</div>
+                <div style="font-size:3px;color:rgba(255,255,255,.55);margin-top:2px;font-family:Inter,sans-serif;">Il y a 3j · Mboro</div>
+                <div style="margin-top:5px;">
+                  <span class="mc-btn mc-btn-p" style="font-size:4px;padding:2px 7px;border-radius:3px;">Lire l'article</span>
+                </div>
+                <div style="margin-top:4px;font-size:3.5px;color:#C85805;font-weight:600;font-family:Inter,sans-serif;">Toutes les actu sport →</div>
+              </div>
+              <!-- dots -->
+              <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);display:flex;gap:2px;">
+                <div style="width:3px;height:3px;background:rgba(255,255,255,.3);border-radius:50%;"></div>
+                <div style="width:8px;height:3px;background:#C85805;border-radius:2px;"></div>
+                <div style="width:3px;height:3px;background:rgba(255,255,255,.3);border-radius:50%;"></div>
+              </div>
+            </div>
+            <!-- bottom bar phone -->
+            <div class="mc-bottombar" style="flex-wrap:wrap;">
+              <div class="mc-bb-item" style="font-size:2.5px;">☀️<span class="mc-bb-val" style="font-size:3px;">29°C · Ens.</span></div>
+              <div class="mc-bb-item" style="font-size:2.5px;">📅<span class="mc-bb-val" style="font-size:3px;">Tournoi plage</span></div>
+            </div>
+            <!-- cards phone -->
+            <div style="background:#F6F3EC;padding:4px;">
+              <div style="font-size:3px;color:#C85805;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:Inter,sans-serif;margin-bottom:3px;">8 nouvelles parutions</div>
+              <div style="background:#fff;border-radius:3px;overflow:hidden;display:flex;gap:4px;padding:3px;margin-bottom:3px;">
+                <div style="width:30px;height:22px;flex-shrink:0;border-radius:2px;background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=80&q=60');background-size:cover;"></div>
+                <div>
+                  <div style="font-size:3px;background:rgba(124,58,237,.1);color:#7c3aed;padding:0 2px;border-radius:1px;display:inline-block;margin-bottom:1px;font-family:Inter,sans-serif;font-weight:700;">Culture</div>
+                  <div style="font-size:3.5px;color:#1A1A2E;font-weight:600;font-family:Inter,sans-serif;line-height:1.3;">Festival de la Grande Côte revient en sept.</div>
+                </div>
+              </div>
+              <div style="background:#fff;border-radius:3px;overflow:hidden;display:flex;gap:4px;padding:3px;">
+                <div style="width:30px;height:22px;flex-shrink:0;border-radius:2px;background-image:url('https://images.unsplash.com/photo-1510016830-f755e0b28aa8?w=80&q=60');background-size:cover;"></div>
+                <div>
+                  <div style="font-size:3px;background:rgba(21,128,61,.1);color:#15803d;padding:0 2px;border-radius:1px;display:inline-block;margin-bottom:1px;font-family:Inter,sans-serif;font-weight:700;">Économie</div>
+                  <div style="font-size:3.5px;color:#1A1A2E;font-weight:600;font-family:Inter,sans-serif;line-height:1.3;">Pêcheurs de Mboro demandent plus de quais</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-home"></div>
+      </div>
+    </div>
+
+  </div><!-- end devices-wrap -->
+
+  <!-- URL -->
+  <div class="poster-url">https://www.mboroactu.com/</div>
+
+</div><!-- end poster -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha384-ZZ1pncU3bQe8y31yfZdMFdSpttDoPmOZg2wguVK9almUodir1PghgT0eY7Mrty8H" crossorigin="anonymous"></script>
+<script>
+// Scale poster to fit screen while keeping 1:1 ratio for export
+(function() {
+  const poster = document.getElementById('poster');
+  const vw = Math.min(window.innerWidth - 40, 700);
+  const scale = vw / 1080;
+  poster.style.transform = `scale(${scale})`;
+  poster.style.marginBottom = `${(1080 * scale) - 1080}px`;
+})();
+
+function downloadPoster() {
+  const poster = document.getElementById('poster');
+  const btn = document.querySelector('.dl-btn');
+  btn.textContent = 'Génération en cours…';
+  btn.disabled = true;
+
+  // Reset scale for capture
+  const origTransform = poster.style.transform;
+  const origMargin = poster.style.marginBottom;
+  poster.style.transform = 'none';
+  poster.style.marginBottom = '0';
+
+  html2canvas(poster, {
+    width: 1080,
+    height: 1080,
+    scale: 2,        // 2x for retina quality → 2160×2160 output
+    useCORS: true,
+    allowTaint: true,
+    backgroundColor: '#F2EBE0',
+    logging: false
+  }).then(canvas => {
+    const link = document.createElement('a');
+    link.download = 'MboroActu-poster.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+
+    // Restore scale
+    poster.style.transform = origTransform;
+    poster.style.marginBottom = origMargin;
+    btn.textContent = '✅ Téléchargé !';
+    setTimeout(() => {
+      btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg> Télécharger en PNG (1080×1080)`;
+      btn.disabled = false;
+    }, 2500);
+  }).catch(() => {
+    poster.style.transform = origTransform;
+    poster.style.marginBottom = origMargin;
+    btn.textContent = 'Erreur — réessayez';
+    btn.disabled = false;
+  });
+}
+</script>
+</body>
+</html>
