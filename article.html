@@ -541,7 +541,7 @@ const STATIC_ARTICLES = {
 
     // Hero
     if (art.imageUrl) {
-      const safe = /^(https?:\/\/|data:image\/)/.test(art.imageUrl) ? art.imageUrl : '';
+      const safe = /^(https?:\/\/|data:image\/|images\/)/.test(art.imageUrl) ? art.imageUrl : '';
       if (safe) hero.style.backgroundImage = `url('${safe}')`;
     }
 
