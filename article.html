@@ -13,13 +13,13 @@
 <meta property="og:type" content="article">
 <meta property="og:title" id="ogTitle" content="MboroActu — Actualités de Mboro">
 <meta property="og:description" id="ogDesc" content="Le portail d'actualités locales de Mboro, Sénégal.">
-<meta property="og:url" id="ogUrl" content="https://mboroactu.com/article.html">
+<meta property="og:url" id="ogUrl" content="https://www.mboroactu.com/article.html">
 <meta property="og:image" id="ogImage" content="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" id="twTitle" content="MboroActu — Actualités de Mboro">
 <meta name="twitter:description" id="twDesc" content="Le portail d'actualités locales de Mboro, Sénégal.">
 <meta name="twitter:image" id="twImage" content="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80">
-<link rel="canonical" id="canonicalUrl" href="https://mboroactu.com/article.html">
+<link rel="canonical" id="canonicalUrl" href="https://www.mboroactu.com/article.html">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -567,9 +567,9 @@ const STATIC_ARTICLES = {
 
     // Absolute image URL for OG
     const ogImgUrl = safeImg
-      ? (safeImg.startsWith('http') ? safeImg : 'https://mboroactu.com/' + safeImg)
+      ? (safeImg.startsWith('http') ? safeImg : 'https://www.mboroactu.com/' + safeImg)
       : 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80';
-    const pageUrl = 'https://mboroactu.com/article.html' + location.search;
+    const pageUrl = 'https://www.mboroactu.com/article.html' + location.search;
 
     // Update Open Graph & Twitter meta tags
     setMeta('ogTitle',  'content', art.title + ' — MboroActu');
@@ -596,7 +596,7 @@ const STATIC_ARTICLES = {
       "publisher": {
         "@type": "NewsMediaOrganization",
         "name": "MboroActu",
-        "url": "https://mboroactu.com"
+        "url": "https://www.mboroactu.com"
       },
       "author": { "@type": "Organization", "name": "MboroActu" },
       "articleSection": art.category || "Actualités",
