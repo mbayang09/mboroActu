@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MboroActu — Article</title>
+<meta name="description" content="Actualité locale de Mboro — MboroActu">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<!-- OG / Twitter — remplis dynamiquement par JS après chargement de l'article -->
+<meta property="og:site_name" content="MboroActu">
+<meta property="og:locale" content="fr_SN">
+<meta property="og:type" content="article">
+<meta property="og:title" id="ogTitle" content="MboroActu — Actualités de Mboro">
+<meta property="og:description" id="ogDesc" content="Le portail d'actualités locales de Mboro, Sénégal.">
+<meta property="og:url" id="ogUrl" content="https://mboroactu.com/article.html">
+<meta property="og:image" id="ogImage" content="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" id="twTitle" content="MboroActu — Actualités de Mboro">
+<meta name="twitter:description" id="twDesc" content="Le portail d'actualités locales de Mboro, Sénégal.">
+<meta name="twitter:image" id="twImage" content="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80">
+<link rel="canonical" id="canonicalUrl" href="https://mboroactu.com/article.html">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -535,15 +552,60 @@ const STATIC_ARTICLES = {
     'Économie':'eco','Éducation':'edu','Événements':'event'
   };
 
+  function setMeta(id, attr, val) {
+    const el = document.getElementById(id);
+    if (el) el.setAttribute(attr, val);
+  }
+
   function render(art) {
     // Page title
     document.title = art.title + ' — MboroActu';
 
     // Hero
-    if (art.imageUrl) {
-      const safe = /^(https?:\/\/|data:image\/|images\/)/.test(art.imageUrl) ? art.imageUrl : '';
-      if (safe) hero.style.backgroundImage = `url('${safe}')`;
-    }
+    const safeImg = art.imageUrl && /^(https?:\/\/|data:image\/|images\/)/.test(art.imageUrl) ? art.imageUrl : '';
+    if (safeImg) hero.style.backgroundImage = `url('${safeImg}')`;
+
+    // Absolute image URL for OG
+    const ogImgUrl = safeImg
+      ? (safeImg.startsWith('http') ? safeImg : 'https://mboroactu.com/' + safeImg)
+      : 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1200&q=80';
+    const pageUrl = 'https://mboroactu.com/article.html' + location.search;
+
+    // Update Open Graph & Twitter meta tags
+    setMeta('ogTitle',  'content', art.title + ' — MboroActu');
+    setMeta('ogDesc',   'content', art.excerpt || art.title);
+    setMeta('ogUrl',    'content', pageUrl);
+    setMeta('ogImage',  'content', ogImgUrl);
+    setMeta('twTitle',  'content', art.title + ' — MboroActu');
+    setMeta('twDesc',   'content', art.excerpt || art.title);
+    setMeta('twImage',  'content', ogImgUrl);
+    setMeta('canonicalUrl', 'href', pageUrl);
+    document.querySelector('meta[name="description"]') && (document.querySelector('meta[name="description"]').content = art.excerpt || art.title);
+
+    // JSON-LD NewsArticle
+    const ld = {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": art.title,
+      "description": art.excerpt || art.title,
+      "image": ogImgUrl,
+      "datePublished": art.date || new Date().toISOString().slice(0,10),
+      "dateModified":  art.date || new Date().toISOString().slice(0,10),
+      "url": pageUrl,
+      "inLanguage": "fr",
+      "publisher": {
+        "@type": "NewsMediaOrganization",
+        "name": "MboroActu",
+        "url": "https://mboroactu.com"
+      },
+      "author": { "@type": "Organization", "name": "MboroActu" },
+      "articleSection": art.category || "Actualités",
+      "keywords": "Mboro, Sénégal, " + (art.category || "actualités")
+    };
+    const s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(ld);
+    document.head.appendChild(s);
 
     const cls   = CAT_CLASS[art.category] || 'actu';
     const date  = art.date
